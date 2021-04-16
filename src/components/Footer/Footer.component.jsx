@@ -53,7 +53,7 @@ const Footer = () => {
                 and more.
               </p>
               <input type="text" placeholder="Enter your email address" />
-              <SecondaryButton>Subscribe</SecondaryButton>
+              <button>Subscribe</button>
             </div>
             <div className="copyright__section">
               <p>Copyright © Taati ar Taat. All Rights Reserved</p>

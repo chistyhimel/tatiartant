@@ -20,14 +20,14 @@ const GlobalStyle = createGlobalStyle`
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
+      font-family: 'Lato', sans-serif;
     background: ${({ theme }) => theme.colors.secondary};
     
     h1{
       font-family: 'Vidaloka', serif;
     }
-    p, h5,h6,small,button,a{
-      font-family: 'Lato', sans-serif;
-    }
+
+  
     
     .slick-prev, .slick-next{
     display: none !important;

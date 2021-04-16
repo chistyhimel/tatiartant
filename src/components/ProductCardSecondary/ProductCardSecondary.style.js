@@ -25,7 +25,7 @@ export const ProductCardSecondaryContainer = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: #fff;
     background-image: linear-gradient(
       to top,
       rgba(4, 4, 4, 0.65),

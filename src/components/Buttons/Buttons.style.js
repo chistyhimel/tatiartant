@@ -78,12 +78,12 @@ export const SecondaryButtonContainer = styled.div`
     text-decoration: none;
     background: transparent;
     padding: 14px 28px;
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    border: 1px solid #ffff;
     text-transform: uppercase;
     font-size: 16px;
     overflow: hidden;
     letter-spacing: 0.2em;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: #ffff;
 
     @media (max-width: 768px) {
       font-size: 12px;
@@ -91,8 +91,8 @@ export const SecondaryButtonContainer = styled.div`
     @media (max-width: 560px) {
       font-size: 10px;
       border: none;
-      background-color: ${({ theme }) => theme.colors.secondary};
-      color: ${({ theme }) => theme.colors.primary};
+      background-color: #ffff;
+      color: #121115;
     }
 
     &::after,
@@ -105,7 +105,7 @@ export const SecondaryButtonContainer = styled.div`
       bottom: 0;
       right: 0;
       left: 0;
-      background: ${({ theme }) => theme.colors.secondary};
+      background: #ffff;
       z-index: -1;
     }
     span {
@@ -114,7 +114,7 @@ export const SecondaryButtonContainer = styled.div`
       transition: color 350ms ease;
     }
     &:hover span {
-      color: ${({ theme }) => theme.colors.primary};
+      color: #231f20;
     }
     &::before {
       transform: translateX(-101%);

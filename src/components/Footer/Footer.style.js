@@ -68,6 +68,15 @@ export const FooterContent = styled.div`
     @media (max-width: 1000px) {
       width: 100%;
     }
+
+    button {
+      background-color: ${({ theme }) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.primary};
+      padding: 12px 20px;
+      border: none;
+      outline: none;
+      letter-spacing: 0.2em;
+    }
   }
   .copyright__section {
     width: 100%;
