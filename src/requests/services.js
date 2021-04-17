@@ -9,24 +9,46 @@ const configParams = {
 
 const userInfoConfigParams = {
   "Content-Type": "application/x-www-form-urlencoded",
-  Authorization: `bearer ${token}`,
+  Authorization: `Bearer ${token}`,
 };
 
 const jsonConfigParams = {
   Accept: "application/json",
   "Content-Type": "application/json",
-  Authorization: `bearer ${token}`,
+  Authorization: `Bearer ${token}`,
 };
 
-export const SIGNIN_CALL = (data) => {
+export const SIGNUP_CALL = (data) => {
   return axios.post(api.user.signUp, data, { headers: configParams });
 };
 
-export const VERIFY_EMAIL_CALL = (key) => {
-  return axios.get(api.user.verifyEmail(key), {
-    headers: userInfoConfigParams,
+export const SIGNUP_OTP_CALL = (data) => {
+  return axios.post(api.user.signUpOTP, data, { headers: configParams });
+};
+
+export const SIGNUP_RESEND_OTP_CALL = (data = " ") => {
+  return axios.post(api.user.signUpResendOTP, data, { headers: configParams });
+};
+
+export const SIGNIN_CALL = (data) => {
+  return axios.post(api.user.signIn, data, { headers: configParams });
+};
+
+export const GET_USER_INFO_CALL = (data) => {
+  return axios.post(api.user.getInfo, data, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${data}`,
+    },
   });
 };
+
+// export const VERIFY_EMAIL_CALL = (key) => {
+//   return axios.get(api.user.verifyEmail(key), {
+//     headers: userInfoConfigParams,
+//   });
+// };
 
 // export const SIGNIN_CALL = (data) => {
 //   return axios.post(api.user.signIn, data, { headers: configParams });

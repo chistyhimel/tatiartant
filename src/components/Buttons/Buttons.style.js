@@ -17,7 +17,7 @@ export const PrimaryButtonContainer = styled.div`
     overflow: hidden;
     letter-spacing: 0.2em;
     color: ${({ theme }) => theme.colors.secondary};
-
+    font-family: "Vidaloka", serif;
     @media (max-width: 768px) {
       font-size: 12px;
     }
@@ -84,7 +84,7 @@ export const SecondaryButtonContainer = styled.div`
     overflow: hidden;
     letter-spacing: 0.2em;
     color: #ffff;
-
+    font-family: "Vidaloka", serif;
     @media (max-width: 768px) {
       font-size: 12px;
     }
@@ -144,6 +144,7 @@ export const TertiaryButtonContainer = styled.div`
   text-align: center;
   width: fit-content;
   cursor: pointer;
+  font-family: "Vidaloka", serif;
   a {
     display: block;
     position: relative;

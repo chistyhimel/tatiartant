@@ -91,3 +91,31 @@ export const SignInFormContainer = styled.div`
     }
   }
 `;
+
+///////////////// OTP Styles/////////////////
+
+export const OtpForm = styled.form`
+  width: 300px;
+
+  @media (max-width: 450px) {
+    width: 95vw;
+  }
+
+  section {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      width: 55px;
+      height: 55px;
+      text-align: center;
+      font-weight: bold;
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+
+  p {
+    font-size: 14px;
+    cursor: pointer;
+  }
+`;

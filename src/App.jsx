@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import GlobalStyle from "./constants/global-styles";
 import themes from "./constants/theme";
 import Footer from "./components/Footer/Footer.component";
@@ -16,34 +18,53 @@ import Cart from "./pages/Cart.page";
 import AboutUs from "./pages/AboutUs.page";
 import ContactUs from "./pages/ContactUs.page";
 import SwitchButton from "./components/SwitchButton/SwitchButton.component";
+import PrivacyStatement from "./pages/PrivacyStatement.page";
+import { createContext } from "react/cjs/react.development";
+
+export const UserContext = createContext();
 
 function App() {
   const [theme, setTheme] = useState("light");
-  console.log(theme);
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const [addToCart, setAddToCart] = useState([]);
+
   return (
     <>
       <ThemeProvider theme={themes[theme]}>
         <GlobalStyle />
-        <Router>
-          <ScrollToTop>
-            <SwitchButton themeState={[theme, setTheme]} />
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/products" component={Products} />
-              <Route exact path="/product-info" component={ProductInfo} />
-              <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/cart" component={Cart} />
-              <Route exact path="/sign-in" component={SignIn} />
-              <Route exact path="/sign-up" component={SignUp} />
-              <Route exact path="/about-us" component={AboutUs} />
-              <Route exact path="/contact-us" component={ContactUs} />
-              {/* Page Not Found Here */}
-              {/* <Route exact path="*" component={" "} /> */}
-            </Switch>
-            <Footer />
-          </ScrollToTop>
-        </Router>
+        <ReactNotification />
+        <UserContext.Provider
+          value={{
+            value: [loggedInUser, setLoggedInUser],
+            value2: [addToCart, setAddToCart],
+          }}
+        >
+          <Router>
+            <ScrollToTop>
+              <SwitchButton themeState={[theme, setTheme]} />
+              <Navbar />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/products" component={Products} />
+                <Route exact path="/product-info" component={ProductInfo} />
+                <Route exact path="/checkout" component={Checkout} />
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path="/sign-in" component={SignIn} />
+                <Route exact path="/sign-up" component={SignUp} />
+                <Route exact path="/about-us" component={AboutUs} />
+                <Route exact path="/contact-us" component={ContactUs} />
+                <Route
+                  exact
+                  path="/privacy-statement"
+                  component={PrivacyStatement}
+                />
+                {/* Page Not Found Here */}
+                {/* <Route exact path="*" component={" "} /> */}
+              </Switch>
+              <Footer />
+            </ScrollToTop>
+          </Router>
+        </UserContext.Provider>
       </ThemeProvider>
     </>
   );

@@ -26,7 +26,6 @@ const Menubar = ({ mobileMenubarState }) => {
     setMobileMenubar(false);
   });
 
-  console.log(openSubMenu);
   return (
     <>
       <MenubarWrapper mobileMenubar={mobileMenubar}>

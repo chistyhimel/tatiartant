@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Lato', sans-serif;
     background: ${({ theme }) => theme.colors.secondary};
     
-    h1{
+    h1,h2,button{
       font-family: 'Vidaloka', serif;
     }
 

@@ -4,8 +4,8 @@ export const ReviewCardContainer = styled.div`
   color: ${({ theme }) => theme.colors.primary};
 
   img {
-    width: 200px;
-    height: 220px;
+    width: 280px;
+    height: 300px;
     object-fit: scale-down;
     display: block;
     margin: 0 auto;

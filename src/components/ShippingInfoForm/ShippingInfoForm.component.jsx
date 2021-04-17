@@ -1,7 +1,7 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/logos/logo-secondary.svg";
 import { CheckoutPageButton } from "../CheckoutContent/CheckoutContent.style";
 import {
   CheckboxWrapper,

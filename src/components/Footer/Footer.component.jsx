@@ -10,13 +10,14 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Container } from "../../constants/container";
 import SecondaryButton from "../Buttons/SecondaryButton.component";
 import { FooterContainer, FooterContent } from "./Footer.style";
 
 const Footer = () => {
   const { pathname } = useLocation();
+  const history = useHistory();
   return pathname === "/checkout" ? null : (
     <>
       <FooterContainer>
@@ -39,11 +40,13 @@ const Footer = () => {
 
             <div className="footer__menu">
               <p className="footer__titile_text">Footer Menu</p>
-              <p>Search</p>
               <p>Return & Enchanges</p>
               <p>Shipping</p>
-              <p>Terms of Service</p>
-              <p>Privacy Statement</p>
+              <p onClick={() => history.push("/")}>Terms of Service</p>
+              <p onClick={() => history.push("/privacy-statement")}>
+                Privacy Statement
+              </p>
+              <p>Cookie Policy</p>
             </div>
 
             <div className="newsletter__section">

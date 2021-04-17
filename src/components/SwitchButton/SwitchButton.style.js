@@ -2,7 +2,12 @@ import styled from "styled-components";
 
 export const SwitchContainer = styled.div`
   position: fixed;
-  right: 0;
-  top: 0;
+  right: 0.5%;
+  top: 5%;
+
   z-index: 99;
+
+  @media (max-width: 1100px) {
+    top: 0.5%;
+  }
 `;

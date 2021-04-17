@@ -10,6 +10,9 @@ const ContactUsContainer = styled.div`
   @media (max-width: 900px) {
     width: 90vw;
   }
+  @media (max-width: 768px) {
+    width: 95vw;
+  }
 
   h1 {
     font-size: 24px;
@@ -25,52 +28,62 @@ const ContactUs = () => {
       <ContactUsContainer>
         <h1>Contact Us</h1>
         <p>
-          Hello, our fellow handloom lovers! <br />
+          Hello to all of our fellow traditional saree lovers! <br />
           <br />
-          We are here to help you. We are friendly and available from 11am to
-          8pm for any kind of assistance related to our brand.
-          <br />
-          <br />
-          Feel free to drop in an email or call/message/WhatsApp on the
-          following details and we will ensure we get back to you the fastest we
-          can! <br />
-          <br />
-          hello@theindianethnicco.com
+          Here we are to help you about any of your queries related to our
+          products, prices and qualities. You can buy with a succinct guide and
+          assistance by our friendly stuffs and we are available in here every
+          day from 11 a.m. to 8 p.m.
           <br />
           <br />
-          <strong>+91 8928216156</strong> <br />
+          Feel free to email us to the given address below and do not hesitate
+          to call, text and even WhatsApp us for any further queries. We will be
+          happy to help and will try our best to solve all of your queries as
+          fast as we can. Our number is also given below. <br />
           <br />
-          PLEASE BEWARE OF FRAUD WEBSITES OPERATING UNDER SIMILAR NAMES like
-          ours with the url of www.indianethniconline.in or
-          www.indianethniconline.com or www.indianethnichub.com | Our brand's
-          name is THE INDIAN ETHNIC CO. spelled exactly in this manner. Fake
-          brands like INDIAN ETHNIC ONLINE, ETHNIC INDIA, ETHNIC INDIAN ONLINE,
-          INDIAN ETHNIC HUB is not us | We will not be able to help you if you
-          contact us for orders placed on the above mentioned fake websites. We
-          do not sell sarees, kurtas or shararas in the range of Rs 499/599/999
-          | Once you go through our website you will realise that the website &
-          the products look nothing similar to these fraud website. You are
-          requested to directly file a police complaint or report it as cyber
-          crime. Our order number starts with #TIECO1 & any order number that
-          does not start in this format DOES NOT BELONG TO US!
+          <>Email:</> <strong>&nbsp;&nbsp;tatiartant@gmail.com </strong>
           <br />
           <br />
-          <u>www.facebook.com/</u> <br />
+          <>Mobile/WhatsApp:</> <strong>&nbsp;&nbsp;+8801737900666 </strong>
           <br />
-          <u>https://www.instagram.com/ </u> <br />
+          <br />
+          <u>Caution:</u>&nbsp;&nbsp; Always be aware of fraud websites which
+          are using the same name of ours. Try to focus on our URL (Uniform
+          Resource Locator) while searching and our URL is www.tatiartant.com .
+          The name of our brand is Tati Ar Tant (তাঁতি আর তাঁত) which spelled
+          exactly in this manner. It is requested to be very mindful of other
+          pages who are trying to fake our brands and replicate our products
+          with low category materials. We always try to ensure our product
+          values by using high quality fabrics to make our sarees and other
+          dresses unique and comfortable. We never replicate clothes and always
+          try to keep our prices minimal and on budget comparing to our
+          qualities for our loving customers. If you experience buoying once
+          from us, you will be in love with our products. If you get some fake
+          pages and replica products which are using our name, then you are
+          cordially requested to directly file a police complaint or report it
+          as a cybercrime.
+          <br />
+          <br />
+          <u>Our Facebook page link: </u>
+          <strong>&nbsp;&nbsp;www.facebook.com/tatiartant</strong>
+          <br />
+          <br />
+          <u>Instagram: </u>
+          <strong>&nbsp;&nbsp;</strong>
+          <br />
           <br />
           <strong>
-            <u>Address:</u>
+            <u>Showroom Address:</u>
           </strong>{" "}
           <br />
           <br />
-          The Indian Ethnic Co.,
+          Tati Ar Tant
           <br />
           <br />
-          Lekhinee Desai
+          Shop No: 62 and 71
           <br />
           <br />
-          B/5,41,Khira Nagar, SV Road, Santacruz West,Mumbai-400054 <br />
+          Town Hall, Asad gate, Mohammadpur, Dhaka <br />
           <br />
           Happy Handloom Shopping!
         </p>

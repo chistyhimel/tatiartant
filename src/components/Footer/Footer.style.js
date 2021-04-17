@@ -24,6 +24,7 @@ export const FooterContent = styled.div`
     p {
       font-size: 17px;
       margin-bottom: 20px;
+      cursor: pointer;
     }
     .footer__titile_text {
       color: ${({ theme }) => theme.colors.footerTitleText};

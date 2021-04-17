@@ -1,20 +1,51 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
+import { useContext, useState } from "react/cjs/react.development";
+import { UserContext } from "../../App";
+import { GET_USER_INFO_CALL, SIGNIN_CALL } from "../../requests/services";
+import { showNotification } from "../../utils/notifications";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
 import { SignInContainer, SignInFormContainer } from "./SignIn.style";
 
 const SignInContent = () => {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  const { value, value2 } = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = value;
+
+  console.log(loggedInUser);
 
   const onSubmit = (data, e) => {
-    if (data.phone.length === 11) {
-      console.log(data);
-      // SIGNIN_CALL(data).then((response) => console.log(response));
-      // e.target.reset();
+    console.log(data);
+    if (data.phone.length >= 11) {
+      SIGNIN_CALL(data).then((response) => {
+        if (response.data.errors) {
+          console.log(response);
+        } else {
+          localStorage["token"] = JSON.stringify(response.data.access_token);
+          // console.log(response.data);
+          console.log(response.data.access_token);
+
+          // GET_USER_INFO_CALL(response.data.access_token).then((response) => {
+          //   console.log(response);
+          // });
+          // localStorage["token"] = JSON.stringify(response.data.access_token);
+          // showNotification("Logged in Successfully!");
+          // history.replace(from);
+        }
+      });
     }
   };
+
+  // useState(() => {
+  //   let token = JSON.parse(localStorage.getItem("token"));
+  //   console.log(token);
+
+  // }, []);
 
   return (
     <>

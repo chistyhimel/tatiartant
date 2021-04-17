@@ -1,24 +1,5 @@
 import styled from "styled-components";
 
-export const TopBar = styled.div`
-  background: ${({ theme }) => theme.colors.primary};
-  text-align: center;
-  z-index: 99;
-  color: #fff;
-  padding: 10px 0;
-  font-size: 14px;
-  p {
-    @media (max-width: 768px) {
-      margin: 0 auto;
-      width: 95%;
-      font-size: 10px;
-    }
-    @media (max-width: 560px) {
-      font-size: 8px;
-    }
-  }
-`;
-
 export const NavBarContainerWrap = styled.div`
   background: ${({ theme }) => theme.colors.secondary};
   z-index: 10;
@@ -31,7 +12,7 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 60vw;
+  width: 70vw;
   margin: 0 auto;
   padding: 0.9% 0;
 
@@ -46,12 +27,12 @@ export const NavBarContainer = styled.div`
   }
 
   .nav__logo {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     cursor: pointer;
 
     @media (max-width: 768px) {
-      margin-left: -50px;
+      margin-left: -70px;
     }
     @media (max-width: 560px) {
       width: 65px;
@@ -69,7 +50,6 @@ export const NavBarContainer = styled.div`
 `;
 
 export const NavbarIconsContainer = styled.div`
-  color: red;
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
@@ -82,11 +62,11 @@ export const NavbarIconsContainer = styled.div`
     width: 22px;
     height: auto;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 40px;
 
     @media (max-width: 768px) {
       margin-left: 0px;
-      margin-right: 20px;
+      margin-right: 25px;
     }
     @media (max-width: 560px) {
       width: 20px;
@@ -101,25 +81,73 @@ export const NavItemsContainer = styled.div`
   margin: 0 auto;
   left: 0;
   right: 0;
-  width: 350px;
+  top: 10%;
+  margin: auto;
+  width: 380px;
   display: flex;
   justify-content: space-between;
-  padding-top: 30px;
+  font-family: "Vidaloka", serif;
+  height: fit-content;
+  /* background-color: red; */
+
   color: ${({ theme }) => theme.colors.primary};
 
   @media (max-width: 768px) {
     display: none;
   }
 
-  p {
-    cursor: pointer;
+  & > :nth-child(1) {
+    width: 20%;
+  }
+  & > :nth-child(2) {
+    width: 20%;
+  }
+  & > :nth-child(3) {
+    width: 30%;
+  }
+
+  div {
+    /* width: 25%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    /* border-right: 1px solid ${({ theme }) => theme.colors.primary};
+    line-height: 0px; */
+
+    position: relative;
+
     &::after {
       content: "";
+      position: absolute;
+      top: 8%;
+      right: 0;
+      width: 1px;
+      height: 70%;
+      background: ${({ theme }) => theme.colors.primary};
+    }
+  }
+
+  & > :nth-child(4) {
+    width: 30%;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  p {
+    cursor: pointer;
+
+    &::after {
+      content: "";
+
       display: block;
       margin: 0 auto;
-      margin-top: 15px;
+      margin-top: 5px;
       width: 0;
-      height: 2.2px;
+      height: 2px;
       background: ${({ theme }) => theme.colors.primary};
       transition: width 0.3s;
     }

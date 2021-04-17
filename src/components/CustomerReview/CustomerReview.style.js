@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CustomerReviewContainer = styled.div`
-  width: 60vw;
+  width: 70vw;
   margin: 5% auto;
   text-align: center;
   overflow-x: hidden;
@@ -14,6 +14,10 @@ export const CustomerReviewContainer = styled.div`
   }
   .slick-list {
     margin: 0 -20px;
+  }
+
+  @media (max-width: 1100px) {
+    width: 95vw;
   }
 
   @media (max-width: 768px) {

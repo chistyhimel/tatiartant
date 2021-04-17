@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Container } from "../../constants/container";
+import { useTheme } from "styled-components";
 import {
   NavBarContainer,
   NavBarContainerWrap,
   NavbarIconsContainer,
   NavItemsContainer,
 } from "./Navbar.style";
-import logo from "../../assets/images/logo.svg";
+import secondaryLogo from "../../assets/logos/logo-secondary.svg";
+import primaryLogo from "../../assets/logos/logo-primary.svg";
 import SearchBar from "../SearchBar/SearchBar.component";
 import ShopCategories from "../ShopCategories/ShopCategories.component";
 import CartSidebar from "../CartSidebar/CartSidebar.component";
@@ -25,16 +27,11 @@ const Navbar = () => {
   const [shopCategoriesOpen, setShopCategoriesOpen] = useState(false);
   const [cartSidebarOpen, setCartSidebarState] = useState(false);
   const [mobileMenubar, setMobileMenubar] = useState(false);
+  const theme = useTheme();
 
   return pathname === "/checkout" ? null : (
     <>
       <NavBarContainerWrap>
-        {/* <TopBar>
-          <p>
-            We ship Worldwide | COD Available | Use code FIRSTBUY to get Tk 250
-            off on your 1st order above Tk 2500
-          </p>
-        </TopBar> */}
         <Container>
           <NavBarContainer>
             {/*---------- Mobile Hamburger Menu---------- */}
@@ -48,50 +45,65 @@ const Navbar = () => {
 
             {/*---------- Mobile Hamburger Menu---------- */}
             <img
-              src={logo}
-              alt=""
+              src={
+                theme.colors.primary === "#231f20" ? secondaryLogo : primaryLogo
+              }
+              alt="tatiartant"
               className="nav__logo"
               onClick={() => history.push("/")}
             />
 
             <NavbarIconsContainer>
               <img
-                src={personIcon}
-                onClick={() => history.push("/sign-in")}
-                alt=""
-              />
-              <img
                 src={searchIcon}
                 alt=""
                 onClick={() => setSearchBarOpen(true)}
               />
+
               <img
                 src={shoppingIcon}
                 alt=""
                 onClick={() => setCartSidebarState(true)}
               />
+
+              <img
+                src={personIcon}
+                onClick={() => history.push("/sign-in")}
+                alt=""
+              />
             </NavbarIconsContainer>
 
             <NavItemsContainer>
-              <p
-                onMouseOver={() => setShopCategoriesOpen(false)}
-                onClick={() => history.push("/")}
-              >
-                Home
-              </p>
-              <p onMouseOver={() => setShopCategoriesOpen(true)}>Shop</p>
-              <p
-                onMouseOver={() => setShopCategoriesOpen(false)}
-                onClick={() => history.push("/about-us")}
-              >
-                About Us
-              </p>
-              <p
-                onMouseOver={() => setShopCategoriesOpen(false)}
-                onClick={() => history.push("/contact-us")}
-              >
-                Contact Us
-              </p>
+              <div>
+                <p
+                  onMouseOver={() => setShopCategoriesOpen(false)}
+                  onClick={() => history.push("/")}
+                >
+                  Home
+                </p>
+              </div>
+
+              <div>
+                <p onMouseOver={() => setShopCategoriesOpen(true)}>Shop</p>
+              </div>
+
+              <div>
+                <p
+                  onMouseOver={() => setShopCategoriesOpen(false)}
+                  onClick={() => history.push("/about-us")}
+                >
+                  About Us
+                </p>
+              </div>
+
+              <div>
+                <p
+                  onMouseOver={() => setShopCategoriesOpen(false)}
+                  onClick={() => history.push("/contact-us")}
+                >
+                  Contact Us
+                </p>
+              </div>
             </NavItemsContainer>
           </NavBarContainer>
         </Container>
