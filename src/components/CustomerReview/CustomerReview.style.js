@@ -5,6 +5,16 @@ export const CustomerReviewContainer = styled.div`
   margin: 5% auto;
   text-align: center;
   overflow-x: hidden;
+
+  @media (max-width: 1100px) {
+    width: 95vw;
+  }
+
+  @media (max-width: 768px) {
+    width: 95vw;
+    margin: 25px auto;
+  }
+
   p {
     color: ${({ theme }) => theme.colors.primary};
   }
@@ -14,15 +24,6 @@ export const CustomerReviewContainer = styled.div`
   }
   .slick-list {
     margin: 0 -20px;
-  }
-
-  @media (max-width: 1100px) {
-    width: 95vw;
-  }
-
-  @media (max-width: 768px) {
-    width: 95vw;
-    margin: 25px auto;
   }
 `;
 

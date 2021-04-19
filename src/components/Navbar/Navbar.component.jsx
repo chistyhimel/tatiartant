@@ -24,7 +24,7 @@ const Navbar = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const [searchBarOpen, setSearchBarOpen] = useState(false);
-  const [shopCategoriesOpen, setShopCategoriesOpen] = useState(false);
+  const [shopCategoriesOpen, setShopCategoriesOpen] = useState(true);
   const [cartSidebarOpen, setCartSidebarState] = useState(false);
   const [mobileMenubar, setMobileMenubar] = useState(false);
   const theme = useTheme();
@@ -68,7 +68,7 @@ const Navbar = () => {
 
               <img
                 src={personIcon}
-                onClick={() => history.push("/sign-in")}
+                onClick={() => history.push("/account")}
                 alt=""
               />
             </NavbarIconsContainer>

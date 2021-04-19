@@ -15,7 +15,7 @@ const SubMenu = ({ openSubMenu }) => {
   return (
     <>
       <SubmenuContainer openSubMenu={openSubMenu}>
-        {menubarData.map((data, idx) => (
+        {/* {menubarData.map((data, idx) => (
           <>
             <p key={idx} onClick={() => openChildMenu(data)}>
               {data.name}
@@ -28,7 +28,11 @@ const SubMenu = ({ openSubMenu }) => {
               />
             ) : null}
           </>
-        ))}
+        ))} */}
+        <p>Sharees</p>
+        <p>Blouses</p>
+        <p>Kurtass</p>
+        <p>Three Pieces</p>
       </SubmenuContainer>
     </>
   );

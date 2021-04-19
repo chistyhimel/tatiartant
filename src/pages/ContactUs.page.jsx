@@ -69,7 +69,7 @@ const ContactUs = () => {
           <br />
           <br />
           <u>Instagram: </u>
-          <strong>&nbsp;&nbsp;</strong>
+          <strong>www.instagram.com/tati_ar_tant</strong>
           <br />
           <br />
           <strong>

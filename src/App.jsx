@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import ReactNotification from "react-notifications-component";
@@ -19,7 +19,9 @@ import AboutUs from "./pages/AboutUs.page";
 import ContactUs from "./pages/ContactUs.page";
 import SwitchButton from "./components/SwitchButton/SwitchButton.component";
 import PrivacyStatement from "./pages/PrivacyStatement.page";
-import { createContext } from "react/cjs/react.development";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.component";
+import Account from "./pages/Account.page";
+import CookiePolicy from "./pages/CookiePolicy.page";
 
 export const UserContext = createContext();
 
@@ -53,11 +55,15 @@ function App() {
                 <Route exact path="/sign-up" component={SignUp} />
                 <Route exact path="/about-us" component={AboutUs} />
                 <Route exact path="/contact-us" component={ContactUs} />
+                <PrivateRoute exact path="/account">
+                  <Account />
+                </PrivateRoute>
                 <Route
                   exact
                   path="/privacy-statement"
                   component={PrivacyStatement}
                 />
+                <Route exact path="/cookie-policy" component={CookiePolicy} />
                 {/* Page Not Found Here */}
                 {/* <Route exact path="*" component={" "} /> */}
               </Switch>

@@ -29,7 +29,7 @@ export const BannerWrapper = styled.div`
       from {
         opacity: 0;
 
-        transform: translateX(-80%);
+        transform: translateX(-120%);
       }
 
       to {
@@ -98,7 +98,9 @@ export const BannerContainer = styled.div`
     h1 {
       color: #fff;
       margin-bottom: 10px;
-
+      text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.7),
+        0px 4px 7px rgba(0, 0, 0, 0.3), 0px 9px 12px rgba(0, 0, 0, 0.3);
+      font-size: 38px;
       @media (max-width: 1100px) {
         font-size: 18px;
       }
@@ -111,7 +113,7 @@ export const BannerContainer = styled.div`
   .banner__img__overlay-1 {
     position: absolute;
     bottom: 20%;
-    right: 5%;
+    right: 10%;
     height: 10vw;
     text-align: right;
 
@@ -136,7 +138,7 @@ export const BannerContainer = styled.div`
   .banner__img__overlay-2 {
     position: absolute;
     bottom: 20%;
-    left: 5%;
+    left: 10%;
     height: 10vw;
     text-align: left;
 
@@ -160,7 +162,7 @@ export const BannerContainer = styled.div`
   .banner__img__overlay-3 {
     position: absolute;
     bottom: 20%;
-    right: 5%;
+    right: 10%;
     height: 10vw;
     text-align: left;
 

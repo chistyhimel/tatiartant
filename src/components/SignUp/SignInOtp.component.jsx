@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
+import { useContext } from "react/cjs/react.development";
+import { UserContext } from "../../App";
 import {
   SIGNUP_OTP_CALL,
   SIGNUP_RESEND_OTP_CALL,
@@ -16,6 +18,8 @@ function SignInOtp({ userNum }) {
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
+  const { value, value2 } = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = value;
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;
@@ -32,9 +36,10 @@ function SignInOtp({ userNum }) {
     SIGNUP_OTP_CALL(currentOtp).then((response) => {
       console.log(response);
       if (response.data.errors) {
-        console.log(response);
+        console.log(response.data);
       } else {
-        console.log("success");
+        setLoggedInUser(response.data.user);
+        localStorage["token"] = JSON.stringify(response.data.token);
         setOtp([...otp.map((v) => "")]);
         showNotification("Registered Successfully!");
         history.replace(from);

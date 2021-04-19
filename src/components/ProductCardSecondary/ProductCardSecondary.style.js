@@ -10,12 +10,12 @@ export const ProductCardSecondaryContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition-duration: 20s;
+    transition-duration: 3s;
   }
   &:hover > img {
-    transform: scale(2);
-    -webkit-transform: scale(2);
-    -moz-transform: scale(2);
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
     z-index: 0;
   }
 

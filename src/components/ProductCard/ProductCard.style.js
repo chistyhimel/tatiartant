@@ -16,14 +16,15 @@ export const CardImgContainer = styled.div`
   }
   img:last-child {
     position: absolute;
-    opacity: 0;
+    /* opacity: 0; */
   }
   &:hover img:last-child {
     position: static;
     opacity: 1;
-    transition: opacity 0.3s linear;
+    /* transition: opacity 1s linear; */
   }
   &:hover img:first-child {
+    transition: opacity 0.2s linear;
     position: absolute;
     opacity: 0;
   }

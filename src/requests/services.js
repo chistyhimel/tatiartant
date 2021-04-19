@@ -1,7 +1,7 @@
 import { api } from "./api";
 import axios from "axios";
 
-let token = localStorage.getItem("token");
+let token = JSON.parse(localStorage.getItem("token"));
 
 const configParams = {
   "Content-Type": "application/json",
@@ -36,11 +36,7 @@ export const SIGNIN_CALL = (data) => {
 
 export const GET_USER_INFO_CALL = (data) => {
   return axios.post(api.user.getInfo, data, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${data}`,
-    },
+    headers: jsonConfigParams,
   });
 };
 

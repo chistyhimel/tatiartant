@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
-import { useContext, useState } from "react/cjs/react.development";
+import { useContext, useEffect, useState } from "react/cjs/react.development";
 import { UserContext } from "../../App";
 import { GET_USER_INFO_CALL, SIGNIN_CALL } from "../../requests/services";
 import { showNotification } from "../../utils/notifications";
@@ -16,8 +16,6 @@ const SignInContent = () => {
 
   const { value, value2 } = useContext(UserContext);
   const [loggedInUser, setLoggedInUser] = value;
-
-  console.log(loggedInUser);
 
   const onSubmit = (data, e) => {
     console.log(data);
@@ -41,11 +39,14 @@ const SignInContent = () => {
     }
   };
 
-  // useState(() => {
-  //   let token = JSON.parse(localStorage.getItem("token"));
-  //   console.log(token);
-
-  // }, []);
+  useEffect(() => {
+    let token = JSON.parse(localStorage.getItem("token"));
+    GET_USER_INFO_CALL().then((response) => {
+      console.log(response);
+      setLoggedInUser(response.data);
+      history.replace(from);
+    });
+  }, []);
 
   return (
     <>

@@ -29,24 +29,45 @@ const Footer = () => {
                 Explore unique handcrafted products from the finest <br />{" "}
                 artisans of Bangladesh.
               </p>
-              <p>Contact us: +880 xxxxxxxxxx</p>
-              <p>Email: hello@taati-ar-taat.com</p>
+              <p>
+                Showroom Address: <br />
+                Tati Ar Tant
+                <br />
+                Shop No: 62 and 71
+                <br />
+                Town Hall, Asad gate, Mohammadpur, Dhaka.
+              </p>
+              <p>Contact us : +8801737900666</p>
+              <p>Email : tatiartant@gmail.com</p>
               <h3>
-                <FontAwesomeIcon icon={faFacebook} />
-                <FontAwesomeIcon icon={faInstagram} />
+                <FontAwesomeIcon
+                  icon={faFacebook}
+                  onClick={() =>
+                    window.open("https://www.facebook.com/tatiartant")
+                  }
+                />
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  onClick={() =>
+                    window.open("https://www.instagram.com/tati_ar_tant")
+                  }
+                />
                 <FontAwesomeIcon icon={faTwitter} />
               </h3>
             </div>
 
             <div className="footer__menu">
-              <p className="footer__titile_text">Footer Menu</p>
+              <br />
+              <br />
               <p>Return & Enchanges</p>
               <p>Shipping</p>
               <p onClick={() => history.push("/")}>Terms of Service</p>
               <p onClick={() => history.push("/privacy-statement")}>
                 Privacy Statement
               </p>
-              <p>Cookie Policy</p>
+              <p onClick={() => history.push("/cookie-policy")}>
+                Cookie Policy
+              </p>
             </div>
 
             <div className="newsletter__section">
@@ -59,7 +80,7 @@ const Footer = () => {
               <button>Subscribe</button>
             </div>
             <div className="copyright__section">
-              <p>Copyright © Taati ar Taat. All Rights Reserved</p>
+              <p>Copyright © Tati ar Tant . All Rights Reserved .</p>
               <div className="border" />
               <h2>
                 <FontAwesomeIcon icon={faCcMastercard} />
