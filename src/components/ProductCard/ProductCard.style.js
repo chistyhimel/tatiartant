@@ -36,6 +36,7 @@ export const CardText = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 400;
   margin-bottom: 5px;
+  font-family: "Vidaloka", serif;
 
   @media (max-width: 1300px) {
     font-size: 12px;

@@ -50,6 +50,7 @@ export const NavBarContainer = styled.div`
 `;
 
 export const NavbarIconsContainer = styled.div`
+  font-size: 22px;
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
@@ -58,11 +59,12 @@ export const NavbarIconsContainer = styled.div`
       display: none;
     }
   }
-  img {
-    width: 22px;
+  & > * {
+    width: 24px;
     height: auto;
     cursor: pointer;
     margin-left: 40px;
+    color: ${({ theme }) => theme.colors.primary};
 
     @media (max-width: 768px) {
       margin-left: 0px;

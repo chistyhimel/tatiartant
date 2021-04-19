@@ -44,7 +44,7 @@ export const ProductCardSecondaryContainer = styled.div`
       P {
         font-size: 26px;
         padding-bottom: 15px;
-
+        font-family: "Vidaloka", serif;
         @media (max-width: 560px) {
           font-size: 18px;
         }

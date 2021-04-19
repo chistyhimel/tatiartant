@@ -30,6 +30,7 @@ export const FooterContent = styled.div`
       color: ${({ theme }) => theme.colors.footerTitleText};
       font-size: 15px;
       margin-bottom: 18px;
+      font-family: "Vidaloka", serif;
     }
 
     h3 {
@@ -107,12 +108,8 @@ export const FooterContent = styled.div`
         background-color: lightgray;
       }
     }
-    h2 {
-      width: 260px;
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-
+    img {
+      width: 25%;
       @media (max-width: 560px) {
         width: 80%;
         margin: 0 auto;

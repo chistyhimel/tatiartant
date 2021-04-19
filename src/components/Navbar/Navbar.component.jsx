@@ -16,7 +16,12 @@ import { useHistory, useLocation } from "react-router";
 import searchIcon from "../../assets/icons/search.svg";
 import personIcon from "../../assets/icons/person.svg";
 import shoppingIcon from "../../assets/icons/shopping.svg";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faSearch,
+  faShoppingBag,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menubar from "../Menubar/Menubar.component";
 
@@ -24,7 +29,7 @@ const Navbar = () => {
   const history = useHistory();
   const { pathname } = useLocation();
   const [searchBarOpen, setSearchBarOpen] = useState(false);
-  const [shopCategoriesOpen, setShopCategoriesOpen] = useState(true);
+  const [shopCategoriesOpen, setShopCategoriesOpen] = useState(false);
   const [cartSidebarOpen, setCartSidebarState] = useState(false);
   const [mobileMenubar, setMobileMenubar] = useState(false);
   const theme = useTheme();
@@ -54,7 +59,7 @@ const Navbar = () => {
             />
 
             <NavbarIconsContainer>
-              <img
+              {/* <img
                 src={searchIcon}
                 alt=""
                 onClick={() => setSearchBarOpen(true)}
@@ -70,6 +75,18 @@ const Navbar = () => {
                 src={personIcon}
                 onClick={() => history.push("/account")}
                 alt=""
+              /> */}
+              <FontAwesomeIcon
+                icon={faSearch}
+                onClick={() => setSearchBarOpen(true)}
+              />
+              <FontAwesomeIcon
+                icon={faShoppingBag}
+                onClick={() => setCartSidebarState(true)}
+              />
+              <FontAwesomeIcon
+                icon={faUser}
+                onClick={() => history.push("/account")}
               />
             </NavbarIconsContainer>
 

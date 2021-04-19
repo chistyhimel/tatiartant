@@ -1,9 +1,4 @@
 import {
-  faCcAmazonPay,
-  faCcApplePay,
-  faCcMastercard,
-  faCcPaypal,
-  faCcVisa,
   faFacebook,
   faInstagram,
   faTwitter,
@@ -12,8 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useHistory, useLocation } from "react-router";
 import { Container } from "../../constants/container";
-import SecondaryButton from "../Buttons/SecondaryButton.component";
 import { FooterContainer, FooterContent } from "./Footer.style";
+import paymentOptionsImg from "../../assets/images/payment-options.jpeg";
 
 const Footer = () => {
   const { pathname } = useLocation();
@@ -82,13 +77,7 @@ const Footer = () => {
             <div className="copyright__section">
               <p>Copyright © Tati ar Tant . All Rights Reserved .</p>
               <div className="border" />
-              <h2>
-                <FontAwesomeIcon icon={faCcMastercard} />
-                <FontAwesomeIcon icon={faCcVisa} />
-                <FontAwesomeIcon icon={faCcPaypal} />
-                <FontAwesomeIcon icon={faCcAmazonPay} />
-                <FontAwesomeIcon icon={faCcApplePay} />
-              </h2>
+              <img src={paymentOptionsImg} alt="" />
             </div>
           </FooterContent>
         </Container>

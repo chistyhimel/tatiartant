@@ -10,4 +10,7 @@ export const ReviewCardContainer = styled.div`
     display: block;
     margin: 0 auto;
   }
+  h4 {
+    font-family: "Vidaloka", serif;
+  }
 `;
