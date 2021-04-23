@@ -40,6 +40,10 @@ export const GET_USER_INFO_CALL = (data) => {
   });
 };
 
+export const GET_PRODUCT_CATEGORY_CALL = () => {
+  return axios.get(api.productCategory);
+};
+
 // export const VERIFY_EMAIL_CALL = (key) => {
 //   return axios.get(api.user.verifyEmail(key), {
 //     headers: userInfoConfigParams,

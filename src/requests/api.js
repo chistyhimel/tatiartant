@@ -8,4 +8,5 @@ export const api = {
     signIn: `${BASE_URL}/login`,
     getInfo: `${BASE_URL}/me`,
   },
+  productCategory: `${BASE_URL}/category`,
 };

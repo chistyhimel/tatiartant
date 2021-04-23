@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { GET_PRODUCT_CATEGORY_CALL } from "../../requests/services";
 import ChildMenu from "./ChildMenu.component";
 import { SubmenuContainer } from "./Menubar.style";
 import { menubarData } from "./MenubarData";
@@ -6,11 +7,20 @@ import { menubarData } from "./MenubarData";
 const SubMenu = ({ openSubMenu }) => {
   const [childMenuOpen, setChildMenuOpen] = useState(false);
 
+  const [categories, setCategories] = useState([]);
   const [childData, setChildData] = useState([]);
   const openChildMenu = (data) => {
     setChildData(data.subs);
     setChildMenuOpen(true);
   };
+
+  useEffect(() => {
+    GET_PRODUCT_CATEGORY_CALL().then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
+
+  console.log(categories);
 
   return (
     <>
@@ -29,10 +39,11 @@ const SubMenu = ({ openSubMenu }) => {
             ) : null}
           </>
         ))} */}
-        <p>Sharees</p>
-        <p>Blouses</p>
-        <p>Kurtass</p>
-        <p>Three Pieces</p>
+        {categories.length
+          ? categories.map((category) => (
+              <p key={category.id}>{category.name}</p>
+            ))
+          : null}
       </SubmenuContainer>
     </>
   );

@@ -24,6 +24,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menubar from "../Menubar/Menubar.component";
+import useWindowDimensions from "../../utils/windowDimentions";
 
 const Navbar = () => {
   const history = useHistory();
@@ -32,6 +33,7 @@ const Navbar = () => {
   const [shopCategoriesOpen, setShopCategoriesOpen] = useState(false);
   const [cartSidebarOpen, setCartSidebarState] = useState(false);
   const [mobileMenubar, setMobileMenubar] = useState(false);
+  const { height, width } = useWindowDimensions();
   const theme = useTheme();
 
   return pathname === "/checkout" ? null : (
@@ -129,12 +131,19 @@ const Navbar = () => {
       {/* ====================={Search Bar, Sidebar}========================= */}
 
       <SearchBar searchBarState={[searchBarOpen, setSearchBarOpen]} />
-      <ShopCategories
-        shopCategoriesState={[shopCategoriesOpen, setShopCategoriesOpen]}
-      />
+
+      {width > 768 && (
+        <ShopCategories
+          shopCategoriesState={[shopCategoriesOpen, setShopCategoriesOpen]}
+        />
+      )}
+
       <CartSidebar sidebarState={[cartSidebarOpen, setCartSidebarState]} />
       {/* ====================={Search Bar, Sidebar}========================= */}
-      <Menubar mobileMenubarState={[mobileMenubar, setMobileMenubar]} />
+
+      {width <= 768 && (
+        <Menubar mobileMenubarState={[mobileMenubar, setMobileMenubar]} />
+      )}
     </>
   );
 };
