@@ -33,8 +33,13 @@ export const MenubarContainer = styled.div`
 `;
 
 export const MenuItemsContainer = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 1;
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
   h1 {
     font-size: 20px;
     margin-bottom: 40px;
@@ -69,39 +74,22 @@ export const MenubarSocilMediaIcons = styled.div`
   color: rgba(255, 255, 255, 0.5);
 `;
 
-// ------------------SubmenuBar------------------//
-
-export const SubmenuContainer = styled.div`
-  width: 100%;
-  display: ${({ openSubMenu }) => (openSubMenu ? "block" : "none")};
-  transition: transform 0.3s ease-in-out;
-  margin-bottom: 20px;
-  -webkit-transition: 0.2s linear;
-  -moz-transition: 0.2s linear;
-  -ms-transition: 0.2s linear;
-  -o-transition: 0.2s linear;
-  transition: 0.2s linear;
-
-  p {
-    padding-left: 20px;
-    border: none;
-    margin: 0;
-    text-transform: capitalize;
-  }
+export const SubMenuWrapper = styled.div`
+  display: block;
+  max-height: ${({ openSubMenu }) => (openSubMenu ? "100%" : "0")};
+  visibility: ${({ openSubMenu }) => (openSubMenu ? "visible" : "hidden")};
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  padding-left: 15px;
 `;
+
+// ------------------SubmenuBar------------------//
 
 // ------------------ChildmenuBar------------------//
 
-export const ChildMenuContainer = styled.div`
-  transform: ${({ childMenuOpen }) =>
-    childMenuOpen ? "scaleY(1)" : "scaleY(0)"};
-  transform-origin: top;
-  transition: transform 0.26s ease;
-
-  p {
-    padding-left: 40px;
-    border: none;
-    margin: 0;
-    text-transform: capitalize;
-  }
+export const ChildMenuWrapper = styled.div`
+  height: ${({ childMenuOpen }) => (childMenuOpen ? "min-content" : "0")};
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  padding-left: 15px;
 `;

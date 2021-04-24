@@ -6,24 +6,32 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { GET_PRODUCT_CATEGORY_CALL } from "../../requests/services";
 import { useClickOutside } from "../../utils/OutsideClickDetact";
 import {
   MenubarContainer,
   MenubarSocilMediaIcons,
   MenubarWrapper,
   MenuItemsContainer,
+  SubMenuWrapper,
 } from "./Menubar.style";
 import SubMenu from "./SubMenu.component";
 
 const Menubar = ({ mobileMenubarState }) => {
   const history = useHistory();
   const [mobileMenubar, setMobileMenubar] = mobileMenubarState;
-
+  const [categories, setCategories] = useState([]);
   const [openSubMenu, setOpenSubMenu] = useState(false);
 
   let menubarRef = useClickOutside(() => {
     setMobileMenubar(false);
   });
+
+  useEffect(() => {
+    GET_PRODUCT_CATEGORY_CALL().then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
 
   return (
     <>
@@ -34,7 +42,14 @@ const Menubar = ({ mobileMenubarState }) => {
             <p onClick={() => history.push("/")}>Home</p>
 
             <p onClick={() => setOpenSubMenu(!openSubMenu)}>Shop</p>
-            <SubMenu openSubMenu={openSubMenu} />
+
+            <SubMenuWrapper openSubMenu={openSubMenu}>
+              {categories.length
+                ? categories.map((item, idx) => (
+                    <SubMenu item={item} key={item.id} />
+                  ))
+                : null}
+            </SubMenuWrapper>
 
             <p onClick={() => history.push("/about-us")}>About Us</p>
             <p onClick={() => history.push("/contact-us")}>Contact Us</p>

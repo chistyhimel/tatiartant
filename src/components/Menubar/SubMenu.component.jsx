@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { GET_PRODUCT_CATEGORY_CALL } from "../../requests/services";
+import { useClickOutside } from "../../utils/OutsideClickDetact";
 import ChildMenu from "./ChildMenu.component";
-import { SubmenuContainer } from "./Menubar.style";
-import { menubarData } from "./MenubarData";
+import { ChildMenuWrapper } from "./Menubar.style";
 
-const SubMenu = ({ openSubMenu }) => {
+const SubMenu = ({ openSubMenu, item }) => {
   const [childMenuOpen, setChildMenuOpen] = useState(false);
 
   const [categories, setCategories] = useState([]);
   const [childData, setChildData] = useState([]);
-  const openChildMenu = (data) => {
-    setChildData(data.subs);
-    setChildMenuOpen(true);
-  };
+
 
   useEffect(() => {
     GET_PRODUCT_CATEGORY_CALL().then((response) => {
@@ -20,32 +17,22 @@ const SubMenu = ({ openSubMenu }) => {
     });
   }, []);
 
-  console.log(categories);
+  let categoryRef = useClickOutside(() => {
+    setChildMenuOpen(false);
+  });
 
   return (
-    <>
-      <SubmenuContainer openSubMenu={openSubMenu}>
-        {/* {menubarData.map((data, idx) => (
-          <>
-            <p key={idx} onClick={() => openChildMenu(data)}>
-              {data.name}
-            </p>
-            {childMenuOpen &&
-            data.id.toString() === childData[0].category_id ? (
-              <ChildMenu
-                childMenuData={childData}
-                childMenuOpen={childMenuOpen}
-              />
-            ) : null}
-          </>
-        ))} */}
-        {categories.length
-          ? categories.map((category) => (
-              <p key={category.id}>{category.name}</p>
-            ))
+    <div>
+      <p onClick={() => setChildMenuOpen(!childMenuOpen)} >
+        {item.name}
+      </p>
+
+      <ChildMenuWrapper childMenuOpen={childMenuOpen}>
+        {item.subs.length && childMenuOpen
+          ? item.subs.map((item, id) => <ChildMenu item={item} />)
           : null}
-      </SubmenuContainer>
-    </>
+      </ChildMenuWrapper>
+    </div>
   );
 };
 

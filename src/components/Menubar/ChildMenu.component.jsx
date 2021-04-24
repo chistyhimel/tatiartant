@@ -1,18 +1,12 @@
 import React from "react";
 import { ChildMenuContainer } from "./Menubar.style";
 
-const ChildMenu = ({ childMenuData, childMenuOpen }) => {
-  const childData = childMenuData;
-  console.log(childData);
-  return childData.length ? (
+const ChildMenu = ({ item }) => {
+  return (
     <>
-      <ChildMenuContainer childMenuOpen={childMenuOpen}>
-        {childData.map((data, idx) => (
-          <p>{data.name}</p>
-        ))}
-      </ChildMenuContainer>
+      <p>{item.name}</p>
     </>
-  ) : null;
+  );
 };
 
 export default ChildMenu;
