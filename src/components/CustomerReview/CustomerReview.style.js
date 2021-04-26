@@ -17,8 +17,14 @@ export const CustomerReviewContainer = styled.div`
 
   p {
     color: ${({ theme }) => theme.colors.primary};
+    font-family: "Vidaloka", serif;
   }
 
+  h5 {
+    font-weight: 200;
+    height: 25px;
+    padding-top: 5px;
+  }
   .slick-slide > div {
     margin: 0 20px;
   }

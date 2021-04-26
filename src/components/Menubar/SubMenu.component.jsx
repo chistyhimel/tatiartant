@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GET_PRODUCT_CATEGORY_CALL } from "../../requests/services";
 import { useClickOutside } from "../../utils/OutsideClickDetact";
 import ChildMenu from "./ChildMenu.component";
@@ -8,8 +8,6 @@ const SubMenu = ({ openSubMenu, item }) => {
   const [childMenuOpen, setChildMenuOpen] = useState(false);
 
   const [categories, setCategories] = useState([]);
-  const [childData, setChildData] = useState([]);
-
 
   useEffect(() => {
     GET_PRODUCT_CATEGORY_CALL().then((response) => {
@@ -17,19 +15,17 @@ const SubMenu = ({ openSubMenu, item }) => {
     });
   }, []);
 
-  let categoryRef = useClickOutside(() => {
-    setChildMenuOpen(false);
-  });
+  // let categoryRef = useClickOutside(() => {
+  //   setChildMenuOpen(false);
+  // });
 
   return (
     <div>
-      <p onClick={() => setChildMenuOpen(!childMenuOpen)} >
-        {item.name}
-      </p>
+      <p onClick={() => setChildMenuOpen(!childMenuOpen)}>{item.name}</p>
 
       <ChildMenuWrapper childMenuOpen={childMenuOpen}>
         {item.subs.length && childMenuOpen
-          ? item.subs.map((item, id) => <ChildMenu item={item} />)
+          ? item.subs.map((item, id) => <ChildMenu key={item.id} item={item} />)
           : null}
       </ChildMenuWrapper>
     </div>

@@ -15,6 +15,7 @@ import {
   ReviewStarsContainer,
   ArrowButtonContainer,
 } from "./CustomerReview.style";
+import { reviewData } from "./customerReviewData";
 
 const CustomerReview = () => {
   const customeSlider = useRef();
@@ -25,9 +26,17 @@ const CustomerReview = () => {
     autoplay: true,
     autoPlaySpeed: 2500,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
       {
         breakpoint: 768,
         settings: {
@@ -69,10 +78,13 @@ const CustomerReview = () => {
         <br />
         <br />
         <Slider {...settings} ref={customeSlider}>
+          {reviewData.map((review, idx) => (
+            <ReviewCard key={idx} review={review} />
+          ))}
+          {/* <ReviewCard />
           <ReviewCard />
           <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
+          <ReviewCard /> */}
         </Slider>
         <ArrowButtonContainer>
           <FontAwesomeIcon icon={faChevronLeft} onClick={() => gotoPrev()} />

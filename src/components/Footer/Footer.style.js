@@ -91,13 +91,17 @@ export const FooterContent = styled.div`
       flex-direction: column;
     }
     p {
-      width: 50%;
+      /* width: 50%; */
       margin: 0;
       @media (max-width: 560px) {
         width: 100%;
         text-align: center;
         margin-bottom: 30px;
       }
+    }
+
+    small {
+      margin-bottom: 10px;
     }
     .border {
       display: none;

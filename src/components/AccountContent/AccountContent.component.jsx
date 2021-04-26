@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext } from "react/cjs/react.development";
+import React, { useContext } from "react";
 import { UserContext } from "../../App";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
 import { AccountContainer } from "./AccountContent.style";

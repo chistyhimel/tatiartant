@@ -25,7 +25,7 @@ const ShopCategories = ({ shopCategoriesState }) => {
       setCategories(response.data);
     });
   }, []);
-  console.log(categories);
+
   return (
     <ShopCategoriesWrapper shopCategoriesOpen={shopCategoriesOpen}>
       <ShopCategoriesContainer

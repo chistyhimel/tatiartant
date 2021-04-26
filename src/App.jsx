@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState, createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
@@ -21,7 +22,6 @@ import PrivacyStatement from "./pages/PrivacyStatement.page";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.component";
 import Account from "./pages/Account.page";
 import CookiePolicy from "./pages/CookiePolicy.page";
-import { createContext, useState } from "react/cjs/react.development";
 
 export const UserContext = createContext();
 

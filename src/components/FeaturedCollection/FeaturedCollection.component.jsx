@@ -70,7 +70,7 @@ const FeaturedCollection = () => {
             <div className="product__container">
               <Slider {...settings} ref={sliderRef}>
                 {images.map((img, idx) => (
-                  <ProductCard key={idx} img={img} idx={idx} />
+                  <ProductCard key={idx} img={img} />
                 ))}
               </Slider>
             </div>

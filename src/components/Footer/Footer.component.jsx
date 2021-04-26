@@ -77,6 +77,9 @@ const Footer = () => {
             <div className="copyright__section">
               <p>Copyright © Tati ar Tant . All Rights Reserved .</p>
               <div className="border" />
+              <small>
+                Developed & Manintained by <strong>PrimeX </strong>
+              </small>
               <img src={paymentOptionsImg} alt="" />
             </div>
           </FooterContent>

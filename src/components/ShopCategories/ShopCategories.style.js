@@ -45,10 +45,12 @@ export const ShopCategoriesContent = styled.div`
       color: ${({ theme }) => theme.colors.primary};
       font-family: "Vidaloka", serif;
       font-weight: bold;
+      cursor: pointer;
     }
     p {
       color: ${({ theme }) => theme.colors.primary};
       margin-bottom: 5px;
+      cursor: pointer;
     }
   }
 `;

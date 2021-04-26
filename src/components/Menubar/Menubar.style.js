@@ -38,7 +38,7 @@ export const MenuItemsContainer = styled.div`
   height: 100%;
 
   &::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
   }
   h1 {
     font-size: 20px;
@@ -88,8 +88,10 @@ export const SubMenuWrapper = styled.div`
 // ------------------ChildmenuBar------------------//
 
 export const ChildMenuWrapper = styled.div`
-  height: ${({ childMenuOpen }) => (childMenuOpen ? "min-content" : "0")};
+  display: block;
+  max-height: ${({ childMenuOpen }) => (childMenuOpen ? "100%" : "0")};
+  visibility: ${({ childMenuOpen }) => (childMenuOpen ? "visible" : "hidden")};
   overflow: hidden;
-  transition: height 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   padding-left: 15px;
 `;

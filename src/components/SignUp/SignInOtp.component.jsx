@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
-import { useContext } from "react/cjs/react.development";
 import { UserContext } from "../../App";
 import {
   SIGNUP_OTP_CALL,

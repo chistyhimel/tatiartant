@@ -20,7 +20,7 @@ const ProductCard = ({ img, idx }) => {
         </CardImgContainer>
         <br />
         <CardText>Bagru Linen Silk Hand Block Printed Saree</CardText>
-        <CardText>Bdt. 4250</CardText>
+        <small>Bdt. 4250</small>
       </ProductCardConatiner>
     </>
   );

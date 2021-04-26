@@ -92,8 +92,14 @@ export const ProductsDetailsContainer = styled.div`
     text-align: center;
   }
   h1 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 400;
+    margin-bottom: 8px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin-top: 10px;
+    }
   }
   small {
     font-size: 14px;

@@ -5,6 +5,10 @@ export const ProductCardConatiner = styled.div`
   height: 100%;
   cursor: pointer;
   overflow: hidden;
+
+  small {
+    font-size: 12px;
+  }
 `;
 
 export const CardImgContainer = styled.div`
@@ -39,7 +43,7 @@ export const CardText = styled.div`
   font-family: "Vidaloka", serif;
 
   @media (max-width: 1300px) {
-    font-size: 12px;
+    font-size: 14px;
   }
   @media (max-width: 560px) {
     font-size: 12px;
