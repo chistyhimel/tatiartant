@@ -7,7 +7,6 @@ import { ReviewCardContainer } from "./ReviewCard.style";
 import pdImg from "../../assets/images/model-img-1.png";
 
 const ReviewCard = ({ review }) => {
-  console.log(review);
   return (
     <>
       <ReviewCardContainer>

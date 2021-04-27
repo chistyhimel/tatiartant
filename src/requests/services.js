@@ -40,8 +40,12 @@ export const GET_USER_INFO_CALL = (data) => {
   });
 };
 
-export const GET_PRODUCT_CATEGORY_CALL = () => {
-  return axios.get(api.productCategory);
+export const GET_PRODUCT_CATEGORIES_CALL = () => {
+  return axios.get(api.productCategories);
+};
+
+export const GET_PRODUCTS = (categoryWithId) => {
+  return axios.post(api.products, categoryWithId, { headers: configParams });
 };
 
 // export const VERIFY_EMAIL_CALL = (key) => {

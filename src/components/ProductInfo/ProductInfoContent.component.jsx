@@ -23,74 +23,62 @@ import modelImg2 from "../../assets/images/model-img-3.png";
 import modelImg3 from "../../assets/images/model-img-4.png";
 import modelImg4 from "../../assets/images/model-img-5.png";
 import useWindowDimensions from "../../utils/windowDimentions";
+import { GET_PRODUCTS } from "../../requests/services";
+import { useParams } from "react-router";
+import { IMG_BASE_URL } from "../../requests/api";
+import Loading from "../Lodading/Loading.component";
 
 const ProductInfoContent = () => {
   // const [images, setImages] = useState(null);
   const { height, width } = useWindowDimensions();
-  const [images, setImages] = useState([
-    {
-      original: modelImg1,
-      thumbnail: modelImg1,
-    },
-    {
-      original: modelImg2,
-      thumbnail: modelImg2,
-    },
-    {
-      original: modelImg3,
-      thumbnail: modelImg3,
-    },
-    {
-      original: modelImg4,
-      thumbnail: modelImg4,
-    },
-    {
-      original: modelImg1,
-      thumbnail: modelImg1,
-    },
-    {
-      original: modelImg3,
-      thumbnail: modelImg3,
-    },
-    {
-      original: modelImg4,
-      thumbnail: modelImg4,
-    },
-    {
-      original: modelImg2,
-      thumbnail: modelImg2,
-    },
-  ]);
+  const [porductInfo, setProductInfo] = useState({});
+  const { productId } = useParams();
+  let {
+    name,
+    photo,
+    policy,
+    price,
+    size,
+    galleries,
+    colors,
+    details,
+  } = porductInfo;
+  const [images, setImages] = useState([]);
+  const [loader, setLoader] = useState(true);
 
-  // useEffect(() => {
-  //   let shouldCancel = false;
+  useEffect(() => {
+    let data = { product_id: productId };
+    GET_PRODUCTS(data).then((res) => {
+      let response = res.data[0];
+      setProductInfo(response);
 
-  //   const call = async () => {
-  //     const response = await axios.get(
-  //       "https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948"
-  //     );
-  //     if (!shouldCancel && response.data && response.data.length > 0) {
-  //       setImages(
-  //         response.data.map((url) => ({
-  //           original: `${url}`,
-  //           thumbnail: `${url}`,
-  //         }))
-  //       );
-  //     }
-  //   };
-  //   call();
-  //   return () => (shouldCancel = true);
-  // }, []);
+      if (response && response.galleries.length) {
+        setImages(
+          response.galleries.map((url) => ({
+            original: `${IMG_BASE_URL}/galleries/${url.photo}`,
+            thumbnail: `${IMG_BASE_URL}/galleries/${url.photo}`,
+          }))
+        );
+        setLoader(false);
+      } else {
+        setImages([
+          {
+            original: `${IMG_BASE_URL}/products/${response.photo}`,
+            thumbnail: `${IMG_BASE_URL}/products/${response.photo}`,
+          },
+        ]);
+        setLoader(false);
+      }
+    });
+  }, [productId]);
 
-  console.log(images);
-
-  return (
+  return !loader ? (
     <>
       <ProductInfoWrap>
         <Container>
           <ProductInfoContentContainer>
             <ProductImgContainer>
-              {images ? (
+              {images.length ? (
                 <ImageGallery
                   thumbnailPosition={width >= 768 ? "left" : "bottom"}
                   items={images}
@@ -100,10 +88,10 @@ const ProductInfoContent = () => {
             </ProductImgContainer>
 
             <ProductsDetailsContainer>
-              <h1>Bagru Kota Doria Silk Hand Block Printed Saree</h1>
+              <h1>{name}</h1>
               <small>SKU: SRBGKOTA042</small>
               <br />
-              <p>Bdt. 4250</p>
+              <p>Bdt. {price}</p>
               <br />
               <SizeChartContainer>
                 <h2>
@@ -125,9 +113,14 @@ const ProductInfoContent = () => {
               </SizeChartContainer>
               <br />
               <br />
-              <TertiaryButton>Add to cart . Bdt. 4250</TertiaryButton>
+              {/* ----------Button Group -------------*/}
+              <span>
+                <TertiaryButton>Add to cart . Bdt. {price}</TertiaryButton>
+              </span>
               <br />
-              <PrimaryButton outlined={true}>Buy it now</PrimaryButton>
+              <span>
+                <PrimaryButton outlined={true}>Buy it now</PrimaryButton>
+              </span>
               <br />
 
               {/* ----------------------Product Spacifications Section ----------------------*/}
@@ -135,7 +128,9 @@ const ProductInfoContent = () => {
               <br />
               <h2>Product Spacifications</h2>
               <br />
-              <ul>
+
+              <div dangerouslySetInnerHTML={{ __html: details }}></div>
+              {/* <ul>
                 <li>
                   Saree Length: 5.5 meters saree, 0.9 meters blouse piece |
                   Width: 45 inches
@@ -143,7 +138,7 @@ const ProductInfoContent = () => {
                 <li>Fabric: Kota Doria Cotton</li>
                 <li>Craft: Bagru</li>
                 <li>Wash Care: Dry Clean only.</li>
-              </ul>
+              </ul> */}
               <br />
 
               {/* ----------------------Shipping Section ----------------------*/}
@@ -205,6 +200,8 @@ const ProductInfoContent = () => {
         </Container>
       </ProductInfoWrap>
     </>
+  ) : (
+    <Loading />
   );
 };
 

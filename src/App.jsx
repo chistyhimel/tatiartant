@@ -22,6 +22,7 @@ import PrivacyStatement from "./pages/PrivacyStatement.page";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.component";
 import Account from "./pages/Account.page";
 import CookiePolicy from "./pages/CookiePolicy.page";
+import Loading from "./components/Lodading/Loading.component";
 
 export const UserContext = createContext();
 
@@ -47,8 +48,16 @@ function App() {
               <Navbar />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/products" component={Products} />
-                <Route exact path="/product-info" component={ProductInfo} />
+                <Route
+                  exact
+                  path="/products/:categoryName/:categoryId"
+                  component={Products}
+                />
+                <Route
+                  exact
+                  path="/product-info/:productId"
+                  component={ProductInfo}
+                />
                 <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/sign-in" component={SignIn} />
@@ -63,6 +72,7 @@ function App() {
                   path="/privacy-statement"
                   component={PrivacyStatement}
                 />
+                <Route exact path="/test" component={Loading} />
                 <Route exact path="/cookie-policy" component={CookiePolicy} />
                 {/* Page Not Found Here */}
                 {/* <Route exact path="*" component={" "} /> */}

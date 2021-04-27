@@ -3,24 +3,36 @@ import {
   CardImgContainer,
   CardText,
   ProductCardConatiner,
-  ProductCardContainerWrap,
 } from "./ProductCard.style";
-import img1 from "../../assets/images/model-img-1.png";
-import img2 from "../../assets/images/model-img-1-hover.png";
 import { useHistory } from "react-router";
+import { IMG_BASE_URL } from "../../requests/api";
 
-const ProductCard = ({ img, idx }) => {
+const ProductCard = ({ product }) => {
   const history = useHistory();
+  let { id, name, galleries, photo, price } = product;
+  // console.log(galleries);
+
+  const goToProductInfoPage = (productId) => {
+    history.push(`/product-info/${productId}`);
+  };
+
   return (
     <>
-      <ProductCardConatiner onClick={() => history.push("/product-info")}>
+      <ProductCardConatiner onClick={() => goToProductInfoPage(id)}>
         <CardImgContainer>
-          <img src={img.img1} alt="" />
-          <img src={img.img1Hover} alt="" />
+          <img src={`${IMG_BASE_URL}/products/${photo}`} alt="" />
+          <img
+            src={
+              galleries.length
+                ? `${IMG_BASE_URL}/galleries/${galleries[0].photo}`
+                : `${IMG_BASE_URL}/products/${photo}`
+            }
+            alt=""
+          />
         </CardImgContainer>
         <br />
-        <CardText>Bagru Linen Silk Hand Block Printed Saree</CardText>
-        <small>Bdt. 4250</small>
+        <CardText>{name}</CardText>
+        <small>Bdt. {price}</small>
       </ProductCardConatiner>
     </>
   );

@@ -1,8 +1,11 @@
 import { faSquare, faTh, faThLarge } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { Container } from "../../constants/container";
+import { GET_PRODUCTS } from "../../requests/services";
 import useWindowDimensions from "../../utils/windowDimentions";
+import Loading from "../Lodading/Loading.component";
 import { images } from "../ProductCard/data";
 import ProductCard from "../ProductCard/ProductCard.component";
 import {
@@ -16,7 +19,23 @@ import {
 const ProductsPageContent = () => {
   const [changeLayout, setChangeLayout] = useState(false);
   const { height, width } = useWindowDimensions();
-  return (
+  const { categoryName, categoryId } = useParams();
+  const [products, setProducts] = useState([]);
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    if ((categoryName, categoryId)) {
+      let data = { [categoryName]: categoryId };
+      GET_PRODUCTS(data).then((res) => {
+        setProducts(res.data);
+        setLoader(false);
+      });
+    }
+  }, [categoryName, categoryId]);
+
+  return loader ? (
+    <Loading />
+  ) : (
     <>
       <ProductsPageContentContainer>
         <h1>Products</h1>
@@ -48,9 +67,11 @@ const ProductsPageContent = () => {
 
         <Container>
           <ProductsContainer changeLayout={changeLayout}>
-            {images.map((img, idx) => (
-              <ProductCard key={idx} img={img} idx={idx} />
-            ))}
+            {products.length
+              ? products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+              : null}
           </ProductsContainer>
         </Container>
       </ProductsPageContentContainer>

@@ -1,4 +1,5 @@
 export const BASE_URL = `https://mudee.shop/tatiartant/api`;
+export const IMG_BASE_URL = `https://mudee.shop/tatiartant/assets/images`;
 
 export const api = {
   user: {
@@ -8,5 +9,6 @@ export const api = {
     signIn: `${BASE_URL}/login`,
     getInfo: `${BASE_URL}/me`,
   },
-  productCategory: `${BASE_URL}/category`,
+  productCategories: `${BASE_URL}/category`,
+  products: `${BASE_URL}/product-cat/sub/child`,
 };

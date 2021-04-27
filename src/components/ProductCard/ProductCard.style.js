@@ -5,7 +5,8 @@ export const ProductCardConatiner = styled.div`
   height: 100%;
   cursor: pointer;
   overflow: hidden;
-
+  text-align: center;
+  color: ${({ theme }) => theme.colors.primary};
   small {
     font-size: 12px;
   }
@@ -37,7 +38,6 @@ export const CardImgContainer = styled.div`
 export const CardText = styled.div`
   font-size: 16px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.primary};
   font-weight: 400;
   margin-bottom: 5px;
   font-family: "Vidaloka", serif;

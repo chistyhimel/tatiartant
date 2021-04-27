@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { GET_PRODUCT_CATEGORY_CALL } from "../../requests/services";
-import { useClickOutside } from "../../utils/OutsideClickDetact";
 import ChildMenu from "./ChildMenu.component";
 import { ChildMenuWrapper } from "./Menubar.style";
 
-const SubMenu = ({ openSubMenu, item }) => {
+const SubMenu = ({ openSubMenu, item, menubarState }) => {
   const [childMenuOpen, setChildMenuOpen] = useState(false);
 
   const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    GET_PRODUCT_CATEGORY_CALL().then((response) => {
-      setCategories(response.data);
-    });
-  }, []);
 
   // let categoryRef = useClickOutside(() => {
   //   setChildMenuOpen(false);
@@ -25,7 +17,13 @@ const SubMenu = ({ openSubMenu, item }) => {
 
       <ChildMenuWrapper childMenuOpen={childMenuOpen}>
         {item.subs.length && childMenuOpen
-          ? item.subs.map((item, id) => <ChildMenu key={item.id} item={item} />)
+          ? item.subs.map((item, id) => (
+              <ChildMenu
+                key={item.id}
+                item={item}
+                menubarState={menubarState}
+              />
+            ))
           : null}
       </ChildMenuWrapper>
     </div>

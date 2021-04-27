@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container } from "../../constants/container";
 import {
   FeaturedCollectionCardContainer,
@@ -15,10 +15,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
 import { images } from "../ProductCard/data";
 import { useHistory } from "react-router";
+import { GET_PRODUCTS } from "../../requests/services";
 const FeaturedCollection = () => {
   const [featuredCollections, setFeaturedCollections] = useState("newInStore");
+  const [products, setProducts] = useState([]);
   const history = useHistory();
   const sliderRef = useRef();
+
+  useEffect(() => {
+    let data = { category_id: 2 };
+    GET_PRODUCTS(data).then((res) => setProducts(res.data));
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -69,9 +77,11 @@ const FeaturedCollection = () => {
 
             <div className="product__container">
               <Slider {...settings} ref={sliderRef}>
-                {images.map((img, idx) => (
-                  <ProductCard key={idx} img={img} />
-                ))}
+                {products.length
+                  ? products.map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))
+                  : null}
               </Slider>
             </div>
 

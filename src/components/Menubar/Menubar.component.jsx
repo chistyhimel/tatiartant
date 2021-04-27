@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { GET_PRODUCT_CATEGORY_CALL } from "../../requests/services";
+import { GET_PRODUCT_CATEGORIES_CALL } from "../../requests/services";
 import { useClickOutside } from "../../utils/OutsideClickDetact";
 import {
   MenubarContainer,
@@ -28,7 +28,7 @@ const Menubar = ({ mobileMenubarState }) => {
   });
 
   useEffect(() => {
-    GET_PRODUCT_CATEGORY_CALL().then((response) => {
+    GET_PRODUCT_CATEGORIES_CALL().then((response) => {
       setCategories(response.data);
     });
   }, []);
@@ -46,7 +46,11 @@ const Menubar = ({ mobileMenubarState }) => {
             <SubMenuWrapper openSubMenu={openSubMenu}>
               {categories.length
                 ? categories.map((item, idx) => (
-                    <SubMenu item={item} key={item.id} />
+                    <SubMenu
+                      item={item}
+                      key={item.id}
+                      menubarState={setMobileMenubar}
+                    />
                   ))
                 : null}
             </SubMenuWrapper>
