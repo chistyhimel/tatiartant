@@ -24,7 +24,7 @@ import modelImg3 from "../../assets/images/model-img-4.png";
 import modelImg4 from "../../assets/images/model-img-5.png";
 import useWindowDimensions from "../../utils/windowDimentions";
 import { GET_PRODUCTS } from "../../requests/services";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { IMG_BASE_URL } from "../../requests/api";
 import Loading from "../Lodading/Loading.component";
 
@@ -45,29 +45,34 @@ const ProductInfoContent = () => {
   } = porductInfo;
   const [images, setImages] = useState([]);
   const [loader, setLoader] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     let data = { product_id: productId };
     GET_PRODUCTS(data).then((res) => {
-      let response = res.data[0];
-      setProductInfo(response);
+      if (res.data.length) {
+        let response = res.data[0];
+        setProductInfo(response);
 
-      if (response && response.galleries.length) {
-        setImages(
-          response.galleries.map((url) => ({
-            original: `${IMG_BASE_URL}/galleries/${url.photo}`,
-            thumbnail: `${IMG_BASE_URL}/galleries/${url.photo}`,
-          }))
-        );
-        setLoader(false);
+        if (response && response.galleries.length) {
+          setImages(
+            response.galleries.map((url) => ({
+              original: `${IMG_BASE_URL}/galleries/${url.photo}`,
+              thumbnail: `${IMG_BASE_URL}/galleries/${url.photo}`,
+            }))
+          );
+          setLoader(false);
+        } else {
+          setImages([
+            {
+              original: `${IMG_BASE_URL}/products/${response.photo}`,
+              thumbnail: `${IMG_BASE_URL}/products/${response.photo}`,
+            },
+          ]);
+          setLoader(false);
+        }
       } else {
-        setImages([
-          {
-            original: `${IMG_BASE_URL}/products/${response.photo}`,
-            thumbnail: `${IMG_BASE_URL}/products/${response.photo}`,
-          },
-        ]);
-        setLoader(false);
+        history.push("/produt-info/not-found");
       }
     });
   }, [productId]);

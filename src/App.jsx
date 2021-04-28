@@ -23,6 +23,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute.component";
 import Account from "./pages/Account.page";
 import CookiePolicy from "./pages/CookiePolicy.page";
 import Loading from "./components/Lodading/Loading.component";
+import NotFoundComponent from "./components/NotFound/NotFound.component";
 
 export const UserContext = createContext();
 
@@ -74,8 +75,8 @@ function App() {
                 />
                 <Route exact path="/test" component={Loading} />
                 <Route exact path="/cookie-policy" component={CookiePolicy} />
-                {/* Page Not Found Here */}
-                {/* <Route exact path="*" component={" "} /> */}
+
+                <Route exact path="*" component={NotFoundComponent} />
               </Switch>
               <Footer />
             </ScrollToTop>
