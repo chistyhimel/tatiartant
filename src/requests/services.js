@@ -48,6 +48,10 @@ export const GET_PRODUCTS = (categoryWithId) => {
   return axios.post(api.products, categoryWithId, { headers: configParams });
 };
 
+export const SEARCH_PRODUCTS = (searchTerm) => {
+  return axios.post(api.search, searchTerm, { headers: configParams });
+};
+
 // export const VERIFY_EMAIL_CALL = (key) => {
 //   return axios.get(api.user.verifyEmail(key), {
 //     headers: userInfoConfigParams,

@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
           <img src={`${IMG_BASE_URL}/products/${photo}`} alt="" />
           <img
             src={
-              galleries.length
+              galleries && galleries.length
                 ? `${IMG_BASE_URL}/galleries/${galleries[0].photo}`
                 : `${IMG_BASE_URL}/products/${photo}`
             }

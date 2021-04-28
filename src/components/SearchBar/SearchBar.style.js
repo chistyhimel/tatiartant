@@ -5,7 +5,7 @@ export const SearchBarWrap = styled.div`
   height: 100vh;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  z-index: 5;
   visibility: ${({ searchBarOpen }) => (searchBarOpen ? "visiabel" : "hidden")};
   transition: visibility 0.3s ease-out;
 `;
@@ -51,5 +51,21 @@ export const SearchBarContentWrap = styled.div`
     @media (max-width: 768px) {
       font-size: 16px;
     }
+  }
+`;
+
+// Searched Products Component Styles
+
+export const SearchedProductsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 2rem;
+  padding: 0px 0 30px 0;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 560px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;

@@ -55,7 +55,7 @@ export const NavbarIconsContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    & > :nth-child(1) {
+    & > :nth-child(3) {
       display: none;
     }
   }

@@ -11,4 +11,7 @@ export const api = {
   },
   productCategories: `${BASE_URL}/category`,
   products: `${BASE_URL}/product-cat/sub/child`,
+  search: `${BASE_URL}/product/search`,
+  newInStoreProducts: `${BASE_URL}/`,
+  onSaleProducts: `${BASE_URL}/`,
 };
