@@ -2,21 +2,22 @@ import React from "react";
 import { CartContentProductContainer } from "./CartContent.style";
 import modelImg from "../../assets/images/model-images/model-1.jpg";
 import QuantitySelectorBox from "../QuantitySelectorBox/QuantitySelectorBox.component";
+import { IMG_BASE_URL } from "../../requests/api";
 
-const CartContentProduct = () => {
+const CartContentProduct = ({ product }) => {
   return (
     <>
       <CartContentProductContainer>
         <section>
-          <img src={modelImg} alt="" />
+          <img src={`${IMG_BASE_URL}/products/${product.photo}`} alt="" />
           <p>
-            Dabu Kota Doria Silk Hand Block Printed Saree <br />
-            Tk. 4,250
+            {product.name} <br />
+            Tk. {product.price}
           </p>
         </section>
 
-        <QuantitySelectorBox />
-        <p>৳ 4400</p>
+        <QuantitySelectorBox porductInfo={product} />
+        <p>৳ {product.total_price}</p>
       </CartContentProductContainer>
     </>
   );

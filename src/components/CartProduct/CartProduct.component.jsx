@@ -2,19 +2,21 @@ import React from "react";
 import { CartProductContainer } from "./CartProduct.style";
 import img from "../../assets/images/model-img-1.png";
 import QuantitySelectorBox from "../QuantitySelectorBox/QuantitySelectorBox.component";
+import { IMG_BASE_URL } from "../../requests/api";
 
-const CartProduct = () => {
+const CartProduct = ({ product }) => {
+  console.log(product);
   return (
     <>
       <CartProductContainer>
         <div className="left">
-          <img src={img} alt="" />
+          <img src={`${IMG_BASE_URL}/products/${product.photo}`} alt="" />
         </div>
         <div className="right">
-          <h6>3 Pcs Sitara Neela Bandhej Suit Set</h6>
+          <h6>{product.name} </h6>
           {/* <h6>M</h6> */}
-          <h6>Bdt. 1295</h6>
-          <QuantitySelectorBox />
+          <h6>Bdt. {product.total_price}</h6>
+          <QuantitySelectorBox porductInfo={product} />
         </div>
       </CartProductContainer>
     </>

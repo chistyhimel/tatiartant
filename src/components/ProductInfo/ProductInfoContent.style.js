@@ -87,6 +87,27 @@ export const ProductsDetailsContainer = styled.div`
     width: 100%;
   }
 
+  .quantity__wrapper {
+    & > :first-child {
+      width: 120px;
+    }
+
+    u {
+      display: none;
+    }
+  }
+
+  button {
+    width: 100%;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+
   div {
     width: 100%;
     text-align: center;

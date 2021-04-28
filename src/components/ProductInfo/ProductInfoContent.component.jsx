@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   ProductImgContainer,
   ProductInfoContentContainer,
@@ -6,34 +6,35 @@ import {
   ProductsDetailsContainer,
   SizeChartContainer,
 } from "./ProductInfoContent.style";
+import { UserContext } from "../../App";
 import { Container } from "../../constants/container";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
 import TertiaryButton from "../Buttons/TertiaryButton.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faFacebookF,
   faPinterest,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import axios from "axios";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
-import modelImg1 from "../../assets/images/model-img-1.png";
-import modelImg2 from "../../assets/images/model-img-3.png";
-import modelImg3 from "../../assets/images/model-img-4.png";
-import modelImg4 from "../../assets/images/model-img-5.png";
 import useWindowDimensions from "../../utils/windowDimentions";
 import { GET_PRODUCTS } from "../../requests/services";
 import { useHistory, useParams } from "react-router";
 import { IMG_BASE_URL } from "../../requests/api";
 import Loading from "../Lodading/Loading.component";
+import QuantitySelectorBox from "../QuantitySelectorBox/QuantitySelectorBox.component";
+import { handleAddToCart, findProductOnCart } from "../../utils/cartManagement";
 
 const ProductInfoContent = () => {
-  // const [images, setImages] = useState(null);
+  const { user, products } = useContext(UserContext);
+  const [cartProducts, setCartProducts] = products;
   const { height, width } = useWindowDimensions();
   const [porductInfo, setProductInfo] = useState({});
   const { productId } = useParams();
   let {
+    id,
     name,
     photo,
     policy,
@@ -98,6 +99,7 @@ const ProductInfoContent = () => {
               <br />
               <p>Bdt. {price}</p>
               <br />
+
               <SizeChartContainer>
                 <h2>
                   <span>Size</span>
@@ -117,11 +119,26 @@ const ProductInfoContent = () => {
                 </div>
               </SizeChartContainer>
               <br />
-              <br />
-              {/* ----------Button Group -------------*/}
-              <span>
-                <TertiaryButton>Add to cart . Bdt. {price}</TertiaryButton>
+
+              <span className="quantity__wrapper">
+                <QuantitySelectorBox porductInfo={porductInfo} />
               </span>
+              <br />
+
+              {/* ----------Button Group -------------*/}
+              <button
+                onClick={() =>
+                  handleAddToCart(cartProducts, setCartProducts, porductInfo)
+                }
+                disabled={findProductOnCart(cartProducts, id) && true}
+              >
+                <TertiaryButton>
+                  {findProductOnCart(cartProducts, id)
+                    ? "Product Already on Cart"
+                    : `Add to cart . Bdt. ${price}`}
+                </TertiaryButton>
+              </button>
+              <br />
               <br />
               <span>
                 <PrimaryButton outlined={true}>Buy it now</PrimaryButton>

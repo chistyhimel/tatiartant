@@ -30,7 +30,7 @@ export const UserContext = createContext();
 function App() {
   const [theme, setTheme] = useState("light");
   const [loggedInUser, setLoggedInUser] = useState({});
-  const [addToCart, setAddToCart] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
 
   return (
     <>
@@ -39,8 +39,8 @@ function App() {
         <ReactNotification />
         <UserContext.Provider
           value={{
-            value: [loggedInUser, setLoggedInUser],
-            value2: [addToCart, setAddToCart],
+            user: [loggedInUser, setLoggedInUser],
+            products: [cartProducts, setCartProducts],
           }}
         >
           <Router>

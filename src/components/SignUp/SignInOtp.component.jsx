@@ -17,8 +17,8 @@ function SignInOtp({ userNum }) {
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
-  const { value, value2 } = useContext(UserContext);
-  const [loggedInUser, setLoggedInUser] = value;
+  const { user, products } = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = user;
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;

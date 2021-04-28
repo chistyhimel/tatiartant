@@ -75,6 +75,10 @@ export const CartProductWrap = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+
+  p {
+    text-align: center;
+  }
 `;
 
 export const CartSidebarBottomSection = styled.div`

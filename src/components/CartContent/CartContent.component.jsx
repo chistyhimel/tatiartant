@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router";
+import { UserContext } from "../../App";
 import CartProduct from "../CartProduct/CartProduct.component";
 import {
   CartContentContainer,
@@ -11,6 +12,8 @@ import {
 import CartContentProduct from "./CartContentProduct";
 
 const CartContent = () => {
+  const { user, products } = useContext(UserContext);
+  const [cartProducts, setCartProducts] = products;
   const history = useHistory();
 
   return (
@@ -27,10 +30,18 @@ const CartContent = () => {
               <p>Quantity</p>
               <p>Total</p>
             </div>
-
-            <CartContentProduct />
-            <CartContentProduct />
-            <CartContentProduct />
+            {cartProducts.length ? (
+              cartProducts.map((product) => (
+                <CartContentProduct key={product.id} product={product} />
+              ))
+            ) : (
+              <>
+                <br />
+                <p>Empty Cart</p>
+                <br />
+                <br />
+              </>
+            )}
 
             <div className="product__subtotal__section">
               <section>
@@ -48,7 +59,8 @@ const CartContent = () => {
 
               <section>
                 <p>
-                  Total: Bdt. 8,650
+                  Total: Bdt.{" "}
+                  {cartProducts.reduce((a, b) => a + b.total_price, 0)}
                   <br />
                   Shipping & taxes calculated at checkout
                 </p>

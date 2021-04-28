@@ -13,8 +13,8 @@ const SignInContent = () => {
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
 
-  const { value, value2 } = useContext(UserContext);
-  const [loggedInUser, setLoggedInUser] = value;
+  const { user, products } = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = user;
 
   const onSubmit = (data, e) => {
     console.log(data);

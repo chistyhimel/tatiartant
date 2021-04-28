@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   CartSidebarContainer,
   CartSidebarTopSection,
@@ -10,8 +10,11 @@ import { useClickOutside } from "../../utils/OutsideClickDetact";
 import CartProduct from "../CartProduct/CartProduct.component";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
 import { useHistory } from "react-router";
+import { UserContext } from "../../App";
 
 const CartSidebar = ({ sidebarState }) => {
+  const { user, products } = useContext(UserContext);
+  const [cartProducts, setCartProducts] = products;
   const [cartSidebarOpen, setCartSidebarState] = sidebarState;
   const history = useHistory();
   let cartSidebarRef = useClickOutside(() => {
@@ -36,12 +39,13 @@ const CartSidebar = ({ sidebarState }) => {
             </small>
           </div>
           <CartProductWrap>
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
+            {cartProducts.length ? (
+              cartProducts.map((product) => (
+                <CartProduct key={product.id} product={product} />
+              ))
+            ) : (
+              <p>Empty Cart</p>
+            )}
           </CartProductWrap>
         </CartSidebarTopSection>
 
@@ -61,7 +65,10 @@ const CartSidebar = ({ sidebarState }) => {
               history.push("/cart");
             }}
           >
-            <PrimaryButton>View cart . Bdt. 1255</PrimaryButton>
+            <PrimaryButton>
+              View cart . Bdt.{" "}
+              {cartProducts.reduce((a, b) => a + b.total_price, 0)}
+            </PrimaryButton>
           </span>
         </CartSidebarBottomSection>
       </CartSidebarContainer>

@@ -1,20 +1,67 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../App";
+import {
+  handleQuantity,
+  handleRemoveItemFromCart,
+} from "../../utils/cartManagement";
 import {
   QuantitySelectorBoxContainer,
   QuantitySelectorWrap,
 } from "./QuantitySelectorBox.style";
 
-const QuantitySelectorBox = () => {
-  const [quantity, setQuantity] = useState(1);
+const QuantitySelectorBox = ({ porductInfo }) => {
+  const { user, products } = useContext(UserContext);
+  const [cartProducts, setCartProducts] = products;
+
+  const increment = "increment";
+  const decrement = "decrement";
+
   return (
     <>
       <QuantitySelectorWrap>
         <QuantitySelectorBoxContainer>
-          <button onClick={() => setQuantity(quantity - 1)}>-</button>
-          <span>{quantity}</span>
-          <button onClick={() => setQuantity(quantity + 1)}>+</button>
+          <button
+            onClick={() => {
+              porductInfo &&
+                handleQuantity(
+                  cartProducts,
+                  setCartProducts,
+                  porductInfo,
+                  decrement
+                );
+            }}
+          >
+            -
+          </button>
+          <span>
+            {porductInfo.total_quantity ? porductInfo.total_quantity : 1}
+          </span>
+          <button
+            onClick={() => {
+              porductInfo &&
+                handleQuantity(
+                  cartProducts,
+                  setCartProducts,
+                  porductInfo,
+                  increment
+                );
+            }}
+          >
+            +
+          </button>
         </QuantitySelectorBoxContainer>
-        <u>Remove</u>
+        <u
+          onClick={() => {
+            porductInfo &&
+              handleRemoveItemFromCart(
+                cartProducts,
+                setCartProducts,
+                porductInfo.id
+              );
+          }}
+        >
+          Remove
+        </u>
       </QuantitySelectorWrap>
     </>
   );

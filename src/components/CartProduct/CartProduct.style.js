@@ -36,6 +36,7 @@ export const CartProductContainer = styled.div`
     h6 {
       font-size: 15px;
       color: ${({ theme }) => theme.colors.primary};
+      min-width: 200px;
       font-family: "Vidaloka", serif;
       font-weight: 400;
       overflow: hidden;
