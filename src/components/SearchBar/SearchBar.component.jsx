@@ -51,7 +51,10 @@ const SearchBar = ({ searchBarState }) => {
 
           {/* -------Searched Products------- */}
           {searchResults.length ? (
-            <SearchedProducts searchResults={searchResults} />
+            <SearchedProducts
+              searchResults={searchResults}
+              setSearchBarOpen={setSearchBarOpen}
+            />
           ) : null}
         </SearchBarContainer>
       </SearchBarWrap>

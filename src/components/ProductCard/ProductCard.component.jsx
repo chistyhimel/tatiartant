@@ -7,13 +7,16 @@ import {
 import { useHistory } from "react-router";
 import { IMG_BASE_URL } from "../../requests/api";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setSearchBarOpen }) => {
   const history = useHistory();
   let { id, name, galleries, photo, price } = product;
   // console.log(galleries);
 
   const goToProductInfoPage = (productId) => {
     history.push(`/product-info/${productId}`);
+    if (setSearchBarOpen) {
+      setSearchBarOpen(false);
+    }
   };
 
   return (
