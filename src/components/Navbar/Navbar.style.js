@@ -75,6 +75,26 @@ export const NavbarIconsContainer = styled.div`
       height: auto;
     }
   }
+
+  span {
+    position: relative;
+    div {
+      position: absolute;
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      top: 0;
+      right: -5px;
+      background-color: red;
+      font-size: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.secondary};
+      border: 1px solid;
+    }
+  }
 `;
 
 export const NavItemsContainer = styled.div`

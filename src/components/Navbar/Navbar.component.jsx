@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container } from "../../constants/container";
 import { useTheme } from "styled-components";
 import {
@@ -25,8 +25,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menubar from "../Menubar/Menubar.component";
 import useWindowDimensions from "../../utils/windowDimentions";
+import { UserContext } from "../../App";
 
 const Navbar = () => {
+  const { user, products } = useContext(UserContext);
+  const [cartProducts, setCartProducts] = products;
   const history = useHistory();
   const { pathname } = useLocation();
   const [searchBarOpen, setSearchBarOpen] = useState(false);
@@ -82,10 +85,16 @@ const Navbar = () => {
                 icon={faSearch}
                 onClick={() => setSearchBarOpen(true)}
               />
-              <FontAwesomeIcon
-                icon={faShoppingBag}
-                onClick={() => setCartSidebarState(true)}
-              />
+              <span>
+                <FontAwesomeIcon
+                  icon={faShoppingBag}
+                  onClick={() => setCartSidebarState(true)}
+                />
+                {cartProducts.length ? (
+                  <div className="">{cartProducts.length} </div>
+                ) : null}
+              </span>
+
               <FontAwesomeIcon
                 icon={faUser}
                 onClick={() => history.push("/account")}

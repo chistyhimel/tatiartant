@@ -5,7 +5,6 @@ import QuantitySelectorBox from "../QuantitySelectorBox/QuantitySelectorBox.comp
 import { IMG_BASE_URL } from "../../requests/api";
 
 const CartProduct = ({ product }) => {
-  console.log(product);
   return (
     <>
       <CartProductContainer>
