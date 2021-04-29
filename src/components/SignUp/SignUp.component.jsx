@@ -17,7 +17,9 @@ const SignUpContent = () => {
   const onSubmit = (data, e) => {
     setError(null);
     let passwordValid = data.password === data.password_confirmation;
-    if (data.phone.length >= 11 && passwordValid) {
+    let passwordLength =
+      data.password.length && data.password_confirmation.length > 4;
+    if (data.phone.length >= 11 && passwordValid && passwordLength) {
       setUserNum(data.phone);
       console.log(data);
 
@@ -40,6 +42,8 @@ const SignUpContent = () => {
         setError("Phone number must be 11 numbers!");
       } else if (!passwordValid) {
         setError("Password not matched! Please try again.");
+      } else if (!passwordLength) {
+        setError("Password must be 4 charecters or more!");
       }
     }
   };
