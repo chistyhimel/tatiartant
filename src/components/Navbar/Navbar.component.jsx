@@ -112,7 +112,14 @@ const Navbar = () => {
               </div>
 
               <div>
-                <p onMouseOver={() => setShopCategoriesOpen(true)}>Shop</p>
+                <p
+                  onMouseOver={() => {
+                    setSearchBarOpen(false);
+                    setShopCategoriesOpen(true);
+                  }}
+                >
+                  Shop
+                </p>
               </div>
 
               <div>
