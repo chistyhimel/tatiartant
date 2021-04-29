@@ -58,7 +58,7 @@ export const SignInFormContainer = styled.div`
       height: 46px;
       width: 400px;
       border: 1px solid lightgray;
-      margin-bottom: 20px;
+      margin-top: 20px;
       padding: 10px;
       font-size: 14px;
       background-color: ${({ theme }) => theme.colors.secondary};
@@ -70,6 +70,13 @@ export const SignInFormContainer = styled.div`
       @media (max-width: 450px) {
         width: 100%;
       }
+    }
+
+    small {
+      color: red;
+      text-align: center;
+      display: block;
+      margin: 10px;
     }
 
     button,

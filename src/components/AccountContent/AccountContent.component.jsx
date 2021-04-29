@@ -4,8 +4,8 @@ import PrimaryButton from "../Buttons/PrimaryButton.component";
 import { AccountContainer } from "./AccountContent.style";
 
 function AccountContent() {
-  const { value, value2 } = useContext(UserContext);
-  const [loggedInUser, setLoggedInUser] = value;
+  const { user, products } = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = user;
 
   console.log(loggedInUser);
   return (

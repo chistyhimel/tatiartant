@@ -1,22 +1,22 @@
 import { api } from "./api";
 import axios from "axios";
 
-let token = JSON.parse(localStorage.getItem("token"));
+// let token = JSON.parse(localStorage.getItem("token"));
 
 const configParams = {
   "Content-Type": "application/json",
 };
 
-const userInfoConfigParams = {
-  "Content-Type": "application/x-www-form-urlencoded",
-  Authorization: `Bearer ${token}`,
-};
+// const userInfoConfigParams = {
+//   "Content-Type": "application/x-www-form-urlencoded",
+//   Authorization: `Bearer ${token}`,
+// };
 
-const jsonConfigParams = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${token}`,
-};
+// const jsonConfigParams = {
+//   Accept: "application/json",
+//   "Content-Type": "application/json",
+//   Authorization: `Bearer ${token}`,
+// };
 
 export const SIGNUP_CALL = (data) => {
   return axios.post(api.user.signUp, data, { headers: configParams });
@@ -36,7 +36,11 @@ export const SIGNIN_CALL = (data) => {
 
 export const GET_USER_INFO_CALL = (data) => {
   return axios.post(api.user.getInfo, data, {
-    headers: jsonConfigParams,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${data}`,
+    },
   });
 };
 

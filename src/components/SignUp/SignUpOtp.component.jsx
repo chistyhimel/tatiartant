@@ -11,7 +11,7 @@ import { showNotification } from "../../utils/notifications";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
 import { OtpForm, SignInFormContainer } from "../SignIn/SignIn.style";
 
-function SignInOtp({ userNum }) {
+function SignUpOtp({ userNum }) {
   const { register, handleSubmit } = useForm();
   const [otp, setOtp] = useState(new Array(4).fill(""));
   let history = useHistory();
@@ -98,4 +98,4 @@ function SignInOtp({ userNum }) {
   );
 }
 
-export default SignInOtp;
+export default SignUpOtp;
