@@ -19,65 +19,67 @@ import {
 const ProductsPageContent = () => {
   const [changeLayout, setChangeLayout] = useState(false);
   const { height, width } = useWindowDimensions();
-  const { categoryName, categoryId } = useParams();
+  const { categoryName, categoryType, categoryId } = useParams();
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     if ((categoryName, categoryId)) {
-      let data = { [categoryName]: categoryId };
+      let data = { [categoryType]: categoryId };
       GET_PRODUCTS(data).then((res) => {
         setProducts(res.data);
         setLoader(false);
       });
     }
-  }, [categoryName, categoryId]);
+    return () => {
+      setLoader(true);
+      setProducts([]);
+    };
+  }, [categoryName, categoryType, categoryId]);
 
   console.log(products);
 
   return loader ? (
     <Loading />
   ) : (
-    <>
-      <ProductsPageContentContainer>
-        <h1>Products</h1>
-        <ProductLayoutCustomize>
-          <div className="left__section">
-            <LayoutCustomizeIcon changeLayout={changeLayout}>
+    <ProductsPageContentContainer>
+      <h1>{categoryName}</h1>
+      <ProductLayoutCustomize>
+        <div className="left__section">
+          <LayoutCustomizeIcon changeLayout={changeLayout}>
+            <FontAwesomeIcon
+              icon={faThLarge}
+              onClick={() => setChangeLayout(true)}
+            />
+            {width >= 768 ? (
               <FontAwesomeIcon
-                icon={faThLarge}
-                onClick={() => setChangeLayout(true)}
+                icon={faTh}
+                onClick={() => setChangeLayout(false)}
               />
-              {width >= 768 ? (
-                <FontAwesomeIcon
-                  icon={faTh}
-                  onClick={() => setChangeLayout(false)}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  icon={faSquare}
-                  onClick={() => setChangeLayout(false)}
-                />
-              )}
-            </LayoutCustomizeIcon>
-          </div>
-          <div className="right__section">
-            <ProductCustomizeText>Sort</ProductCustomizeText>
-            <ProductCustomizeText>Filter</ProductCustomizeText>
-          </div>
-        </ProductLayoutCustomize>
+            ) : (
+              <FontAwesomeIcon
+                icon={faSquare}
+                onClick={() => setChangeLayout(false)}
+              />
+            )}
+          </LayoutCustomizeIcon>
+        </div>
+        <div className="right__section">
+          <ProductCustomizeText>Sort</ProductCustomizeText>
+          <ProductCustomizeText>Filter</ProductCustomizeText>
+        </div>
+      </ProductLayoutCustomize>
 
-        <Container>
-          <ProductsContainer changeLayout={changeLayout}>
-            {products.length
-              ? products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))
-              : null}
-          </ProductsContainer>
-        </Container>
-      </ProductsPageContentContainer>
-    </>
+      <Container>
+        <ProductsContainer changeLayout={changeLayout}>
+          {products.length
+            ? products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            : null}
+        </ProductsContainer>
+      </Container>
+    </ProductsPageContentContainer>
   );
 };
 

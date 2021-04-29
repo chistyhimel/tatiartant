@@ -28,8 +28,8 @@ const ShopCategories = ({ shopCategoriesState }) => {
     });
   }, []);
 
-  const goToProductPage = (categoryName, id) => {
-    history.push(`/products/${categoryName}/${id}`);
+  const goToProductPage = (categoryName, categoryType, id) => {
+    history.push(`/products/${categoryName}/${categoryType}/${id}`);
     setShopCategoriesOpen(false);
   };
 
@@ -43,7 +43,9 @@ const ShopCategories = ({ shopCategoriesState }) => {
             ? categories.map((category) => (
                 <div key={category.id}>
                   <small
-                    onClick={() => goToProductPage("category_id", category.id)}
+                    onClick={() =>
+                      goToProductPage(category.name, "category_id", category.id)
+                    }
                   >
                     {category.name}
                   </small>
@@ -54,7 +56,11 @@ const ShopCategories = ({ shopCategoriesState }) => {
                         <p
                           key={item.id}
                           onClick={() =>
-                            goToProductPage("subcategory_id", item.id)
+                            goToProductPage(
+                              item.name,
+                              "subcategory_id",
+                              item.id
+                            )
                           }
                         >
                           {item.name}

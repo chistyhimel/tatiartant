@@ -8,8 +8,8 @@ const ProductCardSecondary = ({ categoryInfo }) => {
   const { name, id, photo } = categoryInfo;
   const history = useHistory();
 
-  const goToProductPage = (categoryName, id) => {
-    history.push(`/products/${categoryName}/${id}`);
+  const goToProductPage = (categoryName, categoryType, id) => {
+    history.push(`/products/${categoryName}/${categoryType}/${id}`);
   };
 
   return (
@@ -19,7 +19,7 @@ const ProductCardSecondary = ({ categoryInfo }) => {
         <div className="img__overlay">
           <div className="overlay__content">
             <p>{name}</p>
-            <span onClick={() => goToProductPage("category_id", id)}>
+            <span onClick={() => goToProductPage(name, "category_id", id)}>
               <SecondaryButton>Shop Now</SecondaryButton>
             </span>
           </div>

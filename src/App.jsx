@@ -66,7 +66,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route
                   exact
-                  path="/products/:categoryName/:categoryId"
+                  path="/products/:categoryName/:categoryType/:categoryId"
                   component={Products}
                 />
                 <Route
