@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { api, BASE_URL } from "./api";
 import axios from "axios";
 
 // let token = JSON.parse(localStorage.getItem("token"));
@@ -54,6 +54,10 @@ export const GET_PRODUCTS = (categoryWithId) => {
 
 export const SEARCH_PRODUCTS = (searchTerm) => {
   return axios.post(api.search, searchTerm, { headers: configParams });
+};
+
+export const GET_FEATURED_PRODUCTS = (type) => {
+  return axios.get(`${BASE_URL}/product/${type}`);
 };
 
 // export const VERIFY_EMAIL_CALL = (key) => {

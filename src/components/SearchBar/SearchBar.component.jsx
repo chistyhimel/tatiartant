@@ -43,7 +43,6 @@ const SearchBar = ({ searchBarState }) => {
       setSearchResults([]);
     }
   }, [searchTerm]);
-  console.log(searchResults);
   return (
     <>
       <SearchBarWrap searchBarOpen={searchBarOpen}>

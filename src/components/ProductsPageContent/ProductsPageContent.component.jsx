@@ -6,7 +6,6 @@ import { Container } from "../../constants/container";
 import { GET_PRODUCTS } from "../../requests/services";
 import useWindowDimensions from "../../utils/windowDimentions";
 import Loading from "../Lodading/Loading.component";
-import { images } from "../ProductCard/data";
 import ProductCard from "../ProductCard/ProductCard.component";
 import {
   LayoutCustomizeIcon,

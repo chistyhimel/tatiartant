@@ -1,6 +1,5 @@
 import React from "react";
 import { ProductCardSecondaryContainer } from "./ProductCardSecondary.style";
-import modelImg from "../../assets/images/model-2.jpg";
 import SecondaryButton from "../Buttons/SecondaryButton.component";
 import { IMG_BASE_URL } from "../../requests/api";
 import { useHistory } from "react-router";

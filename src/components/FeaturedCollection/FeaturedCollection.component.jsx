@@ -13,23 +13,28 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
-import { images } from "../ProductCard/data";
 import { useHistory } from "react-router";
-import { GET_PRODUCTS } from "../../requests/services";
+import { GET_FEATURED_PRODUCTS } from "../../requests/services";
 const FeaturedCollection = () => {
-  const [featuredCollections, setFeaturedCollections] = useState("newInStore");
+  const [featuredCollections, setFeaturedCollections] = useState("new");
   const [products, setProducts] = useState([]);
   const history = useHistory();
   const sliderRef = useRef();
 
   useEffect(() => {
-    let data = { category_id: 2 };
-    GET_PRODUCTS(data).then((res) => setProducts(res.data));
-  }, []);
+    // let data = { category_id: 2 };
+    GET_FEATURED_PRODUCTS(featuredCollections).then((res) =>
+      setProducts(res.data)
+    );
+
+    return () => {
+      setProducts([]);
+    };
+  }, [featuredCollections]);
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: products.length > 4 ? true : false,
     autoplay: false,
     speed: 500,
     slidesToShow: 4,
@@ -61,14 +66,31 @@ const FeaturedCollection = () => {
     sliderRef.current.slickPrev();
   };
 
+  console.log(featuredCollections);
+  console.log(products);
+
   return (
     <>
       <Container>
         <FeaturedCollectionContainer>
           <h4>Featured Collection</h4>
           <div className="featured__collection">
-            <p>New In Store</p>
-            <p>On Sale</p>
+            <p
+              onClick={() => setFeaturedCollections("new")}
+              className={`${
+                featuredCollections === "new" && "active__feature"
+              }`}
+            >
+              New In Store
+            </p>
+            <p
+              onClick={() => setFeaturedCollections("on-sale")}
+              className={`${
+                featuredCollections === "on-sale" && "active__feature"
+              }`}
+            >
+              On Sale
+            </p>
           </div>
           <FeaturedCollectionCardContainer>
             <button onClick={() => gotoPrev()}>

@@ -46,6 +46,19 @@ export const FeaturedCollectionContainer = styled.div`
         width: 100%;
       }
     }
+
+    .active__feature {
+      &::after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        width: 0;
+        height: 1px;
+        background: ${({ theme }) => theme.colors.primary};
+        transition: width 0.3s;
+        width: 100%;
+      }
+    }
   }
 `;
 
