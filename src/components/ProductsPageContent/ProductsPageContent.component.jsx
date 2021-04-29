@@ -33,6 +33,8 @@ const ProductsPageContent = () => {
     }
   }, [categoryName, categoryId]);
 
+  console.log(products);
+
   return loader ? (
     <Loading />
   ) : (
