@@ -10,11 +10,14 @@ import {
 } from "./SearchBar.style";
 import { SEARCH_PRODUCTS } from "../../requests/services";
 import SearchedProducts from "./SearchedProducts.component";
+import loadingImg from "../../assets/icons/loading.gif";
 
 const SearchBar = ({ searchBarState }) => {
   const [searchBarOpen, setSearchBarOpen] = searchBarState;
   const [searchTerm, setSearchTerm] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [noProducts, setNoProducts] = useState(false);
 
   let searchBarRef = useClickOutside(() => {
     setSearchBarOpen(false);
@@ -22,13 +25,25 @@ const SearchBar = ({ searchBarState }) => {
 
   useEffect(() => {
     if (searchTerm) {
+      setSearchLoading(true);
       const data = { name: searchTerm };
       SEARCH_PRODUCTS(data).then((response) => {
-        setSearchResults(response.data);
+        if (response.data.length) {
+          setSearchResults(response.data);
+
+          setSearchLoading(false);
+        } else {
+          setNoProducts(true);
+          setSearchLoading(false);
+        }
       });
+    } else {
+      setSearchLoading(false);
+      setNoProducts(false);
+      setSearchResults([]);
     }
   }, [searchTerm]);
-
+  console.log(searchResults);
   return (
     <>
       <SearchBarWrap searchBarOpen={searchBarOpen}>
@@ -47,15 +62,19 @@ const SearchBar = ({ searchBarState }) => {
                 onClick={() => setSearchBarOpen(false)}
               />
             </SearchBarContentWrap>
+            <hr />
           </Container>
-
           {/* -------Searched Products------- */}
-          {searchResults.length ? (
+          {searchLoading ? (
+            <img src={loadingImg} alt="" className="loading__spinner" />
+          ) : searchResults.length ? (
             <SearchedProducts
               searchResults={searchResults}
               setSearchBarOpen={setSearchBarOpen}
             />
-          ) : null}
+          ) : (
+            noProducts && <p>No products found</p>
+          )}
         </SearchBarContainer>
       </SearchBarWrap>
     </>

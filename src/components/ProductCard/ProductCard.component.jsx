@@ -9,7 +9,7 @@ import { IMG_BASE_URL } from "../../requests/api";
 
 const ProductCard = ({ product, setSearchBarOpen }) => {
   const history = useHistory();
-  let { id, name, galleries, photo, price } = product;
+  let { id, name, galleries, photo, price, thumbnail } = product;
   // console.log(galleries);
 
   const goToProductInfoPage = (productId) => {
@@ -23,10 +23,19 @@ const ProductCard = ({ product, setSearchBarOpen }) => {
     <>
       <ProductCardConatiner onClick={() => goToProductInfoPage(id)}>
         <CardImgContainer>
-          <img src={`${IMG_BASE_URL}/products/${photo}`} alt="" />
           <img
             src={
-              galleries && galleries.length
+              photo
+                ? `${IMG_BASE_URL}/products/${photo}`
+                : `${IMG_BASE_URL}/thumbnails/${thumbnail}`
+            }
+            alt=""
+          />
+          <img
+            src={
+              thumbnail
+                ? `${IMG_BASE_URL}/thumbnails/${thumbnail}`
+                : galleries && galleries.length
                 ? `${IMG_BASE_URL}/galleries/${galleries[0].photo}`
                 : `${IMG_BASE_URL}/products/${photo}`
             }

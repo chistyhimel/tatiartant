@@ -36,7 +36,7 @@ export const PrimaryButtonContainer = styled.div`
       z-index: -1;
     }
     span {
-      z-index: 5;
+      z-index: 2;
       position: relative;
       transition: color 350ms ease;
     }
@@ -109,7 +109,7 @@ export const SecondaryButtonContainer = styled.div`
       z-index: -1;
     }
     span {
-      z-index: 5;
+      z-index: 2;
       position: relative;
       transition: color 350ms ease;
     }
@@ -177,7 +177,7 @@ export const TertiaryButtonContainer = styled.div`
       z-index: -1;
     }
     span {
-      z-index: 5;
+      z-index: 2;
       position: relative;
       transition: color 350ms ease;
     }

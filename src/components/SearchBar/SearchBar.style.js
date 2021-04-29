@@ -19,6 +19,22 @@ export const SearchBarContainer = styled.div`
     searchBarOpen ? "translateY(0)" : "translateY(-100%)"};
   transition: transform 0.3s ease-in-out;
   border-bottom: 1px solid lightgray;
+
+  p {
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .loading__spinner {
+    margin: 0 auto;
+    width: 100px;
+    display: block;
+    padding: 20px 0;
+
+    @media (max-width: 560px) {
+      width: 80px;
+    }
+  }
 `;
 
 export const SearchBarContentWrap = styled.div`
@@ -60,7 +76,7 @@ export const SearchedProductsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 2rem;
-  padding: 0px 0 30px 0;
+  padding: 0px 10px 30px 10px;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
