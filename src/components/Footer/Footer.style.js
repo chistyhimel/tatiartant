@@ -99,6 +99,9 @@ export const FooterContent = styled.div`
         text-align: center;
         margin-bottom: 30px;
       }
+      @media (max-width: 350px) {
+        font-size: 12px;
+      }
     }
 
     .payment__icons {
@@ -126,6 +129,10 @@ export const FooterContent = styled.div`
       padding-top: 15px;
       margin-top: 15px;
       border-top: 1px solid lightgray;
+    }
+
+    @media (max-width: 350px) {
+      font-size: 10px;
     }
 
     img {
