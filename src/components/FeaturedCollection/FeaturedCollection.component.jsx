@@ -73,7 +73,7 @@ const FeaturedCollection = () => {
     <>
       <Container>
         <FeaturedCollectionContainer>
-          <h4>Featured Collection</h4>
+          <h4>Featured Collections</h4>
           <div className="featured__collection">
             <p
               onClick={() => setFeaturedCollections("new")}

@@ -6,6 +6,7 @@ export const FeaturedCollectionContainer = styled.div`
   color: ${({ theme }) => theme.colors.primary};
 
   h4 {
+    font-family: "Vidaloka", serif;
     @media (max-width: 560px) {
       font-size: 12px;
     }

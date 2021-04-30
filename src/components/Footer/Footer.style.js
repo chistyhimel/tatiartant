@@ -91,7 +91,6 @@ export const FooterContent = styled.div`
       flex-direction: column;
     }
     p {
-      /* width: 50%; */
       margin: 0;
       font-size: 15px;
       @media (max-width: 768px) {
