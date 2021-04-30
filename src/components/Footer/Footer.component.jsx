@@ -8,11 +8,15 @@ import React from "react";
 import { useHistory, useLocation } from "react-router";
 import { Container } from "../../constants/container";
 import { FooterContainer, FooterContent } from "./Footer.style";
-import paymentOptionsImg from "../../assets/images/payment-options.jpeg";
+import paymentOptionsImg from "../../assets/images/payment-options.png";
+import { useTheme } from "styled-components";
+import ecDarkLogo from "../../assets/logos/ec-nanager-black.svg";
+import ecWhiteLogo from "../../assets/logos/ec-manager-white.svg";
 
 const Footer = () => {
   const { pathname } = useLocation();
   const history = useHistory();
+  const theme = useTheme();
   return pathname === "/checkout" ? null : (
     <>
       <FooterContainer>
@@ -74,13 +78,26 @@ const Footer = () => {
               <input type="text" placeholder="Enter your email address" />
               <button>Subscribe</button>
             </div>
+
             <div className="copyright__section">
               <p>Copyright © Tati ar Tant . All Rights Reserved .</p>
-              <div className="border" />
-              <small>
-                Developed & Manintained by <strong>PrimeX </strong>
-              </small>
-              <img src={paymentOptionsImg} alt="" />
+
+              <div
+                className="dev__info__wrap"
+                onClick={() => window.open("https://www.primex-bd.com/")}
+              >
+                <img
+                  src={
+                    theme.colors.primary === "#231f20"
+                      ? ecDarkLogo
+                      : ecWhiteLogo
+                  }
+                  alt=""
+                />
+                &nbsp;&nbsp; <small>by</small>
+                <strong> &nbsp; Primex information systems limited</strong>
+              </div>
+              <img src={paymentOptionsImg} className="payment__icons" alt="" />
             </div>
           </FooterContent>
         </Container>

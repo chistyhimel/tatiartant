@@ -13,9 +13,6 @@ import SearchBar from "../SearchBar/SearchBar.component";
 import ShopCategories from "../ShopCategories/ShopCategories.component";
 import CartSidebar from "../CartSidebar/CartSidebar.component";
 import { useHistory, useLocation } from "react-router";
-import searchIcon from "../../assets/icons/search.svg";
-import personIcon from "../../assets/icons/person.svg";
-import shoppingIcon from "../../assets/icons/shopping.svg";
 import {
   faBars,
   faSearch,

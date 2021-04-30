@@ -19,7 +19,7 @@ export const FooterContent = styled.div`
     color: ${({ theme }) => theme.colors.secondary};
     @media (max-width: 560px) {
       width: 100%;
-      margin-bottom: 10%;
+      margin-bottom: 10px;
     }
     p {
       font-size: 17px;
@@ -87,37 +87,49 @@ export const FooterContent = styled.div`
     align-items: center;
     flex-wrap: wrap;
     margin-top: 5%;
-    @media (max-width: 560px) {
+    @media (max-width: 768px) {
       flex-direction: column;
     }
     p {
       /* width: 50%; */
       margin: 0;
-      @media (max-width: 560px) {
+      font-size: 15px;
+      @media (max-width: 768px) {
         width: 100%;
         text-align: center;
         margin-bottom: 30px;
       }
     }
 
-    small {
-      margin-bottom: 10px;
-    }
-    .border {
-      display: none;
-      @media (max-width: 560px) {
-        display: block;
-        height: 0.2px;
-        width: 100%;
-        background-color: lightgray;
-      }
-    }
-    img {
+    .payment__icons {
       width: 25%;
-      @media (max-width: 560px) {
+      @media (max-width: 1000px) {
+        width: 30%;
+      }
+      @media (max-width: 768px) {
         width: 80%;
         margin: 0 auto;
       }
+    }
+  }
+
+  .dev__info__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+
+    @media (max-width: 900px) {
+      order: 1;
+      width: 100%;
+      padding-top: 15px;
+      margin-top: 15px;
+      border-top: 1px solid lightgray;
+    }
+
+    img {
+      width: 90px;
     }
   }
 `;
