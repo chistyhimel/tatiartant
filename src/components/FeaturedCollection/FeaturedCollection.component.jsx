@@ -4,7 +4,6 @@ import {
   FeaturedCollectionCardContainer,
   FeaturedCollectionContainer,
 } from "./FeaturedCollection.style";
-import NewInStore from "../NewInStore/NewInStore.component";
 import ProductCard from "../ProductCard/ProductCard.component";
 import Slider from "react-slick";
 import {
@@ -22,7 +21,6 @@ const FeaturedCollection = () => {
   const sliderRef = useRef();
 
   useEffect(() => {
-    // let data = { category_id: 2 };
     GET_FEATURED_PRODUCTS(featuredCollections).then((res) =>
       setProducts(res.data)
     );
@@ -65,9 +63,6 @@ const FeaturedCollection = () => {
   const gotoPrev = () => {
     sliderRef.current.slickPrev();
   };
-
-  console.log(featuredCollections);
-  console.log(products);
 
   return (
     <>
