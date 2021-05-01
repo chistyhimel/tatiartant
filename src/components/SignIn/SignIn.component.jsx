@@ -93,7 +93,7 @@ const SignInContent = () => {
           </form>
           <p>
             Don't have an account ?
-            <span onClick={() => history.push("/sign-up")}>Create one</span>
+            <span onClick={() => history.push("/sign-up")}> Create one</span>
           </p>
         </SignInFormContainer>
       </SignInContainer>
