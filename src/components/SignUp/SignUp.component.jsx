@@ -21,7 +21,6 @@ const SignUpContent = () => {
       data.password.length && data.password_confirmation.length >= 4;
     if (data.phone.length >= 11 && passwordValid && passwordLength) {
       setUserNum(data.phone);
-      console.log(data);
 
       SIGNUP_CALL(data).then((response) => {
         if (response.data.errors) {
