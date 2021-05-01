@@ -18,7 +18,7 @@ export const ShippingInfoFormContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0;
   }
-  .contact__info {
+  /* .contact__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +29,7 @@ export const ShippingInfoFormContainer = styled.div`
       flex-direction: column;
       align-items: flex-start;
     }
-  }
+  } */
 
   .shipping__wrapper {
     @media (max-width: 768px) {
@@ -111,22 +111,6 @@ export const InputWrap = styled.div`
       width: 100%;
     }
   }
-  select {
-    width: 48%;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: none;
-    border: 1px solid lightgray;
-    outline: none;
-    height: 46px;
-    padding: 0 15px;
-    &:focus {
-      border: 2px solid ${({ theme }) => theme.colors.primary};
-    }
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-  }
 `;
 
 export const CheckboxWrapper = styled.div`
@@ -142,7 +126,7 @@ export const CheckboxWrapper = styled.div`
   }
 `;
 
-export const ShippingAddress = styled.div`
+export const ShippingAddress = styled.form`
   @media (max-width: 768px) {
     margin-top: 20px;
   }
@@ -150,5 +134,23 @@ export const ShippingAddress = styled.div`
   small {
     display: inline;
     margin-left: 30px;
+  }
+
+  select {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid lightgray;
+    outline: none;
+    height: 46px;
+    padding: 0 15px;
+    display: block;
+    &:focus {
+      border: 2px solid ${({ theme }) => theme.colors.primary};
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 `;

@@ -18,7 +18,7 @@ const SignInContent = () => {
 
   const onSubmit = (data, e) => {
     console.log(data);
-    if (data.phone.length >= 11 && data.password.length >= 3) {
+    if (data.phone.length >= 11 && data.password.length >= 4) {
       SIGNIN_CALL(data)
         .then((response) => {
           if (response.data) {
@@ -48,7 +48,7 @@ const SignInContent = () => {
     } else {
       if (data.phone.length < 11) {
         setError("Phone number must be 11 numbers!");
-      } else if (data.password.length < 3) {
+      } else if (data.password.length <= 4) {
         setError("Password must be 4 charecters or more!");
       }
     }

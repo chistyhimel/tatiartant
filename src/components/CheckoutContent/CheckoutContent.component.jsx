@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../App";
 import {
   CartProductsSection,
   CheckoutContentContainer,
@@ -6,25 +7,29 @@ import {
   CuponCodeSection,
   PriceCalcSection,
 } from "./CheckoutContent.style";
-import img from "../../assets/images/model-2.jpg";
 import ShippingInfoForm from "../ShippingInfoForm/ShippingInfoForm.component";
+import { IMG_BASE_URL } from "../../requests/api";
 const CheckoutContent = () => {
+  const { user, products } = useContext(UserContext);
+  const [cartProducts, setCartProducts] = products;
+
   return (
     <>
       <CheckoutContentContainer>
         <ShippingInfoForm />
         <CartProductsSection>
-          <div className="cart_product">
-            <img src={img} alt="" />
-            <p>Dabu Kota Doria Silk Hand Block Printed Saree</p>
-            <p>৳ 4400.00</p>
-          </div>
-
-          <div className="cart_product">
-            <img src={img} alt="" />
-            <p>Dabu Kota Doria Silk Hand Block Printed Saree</p>
-            <p>৳ 4400.00</p>
-          </div>
+          {cartProducts.length
+            ? cartProducts.map((product) => (
+                <div className="cart_product" key={product.id}>
+                  <img
+                    src={`${IMG_BASE_URL}/products/${product.photo}`}
+                    alt=""
+                  />
+                  <p>{product.name}</p>
+                  <p>৳ {product.total_price}.00</p>
+                </div>
+              ))
+            : null}
 
           <CuponCodeSection>
             <input type="text" placeholder="Gift card or discount code" />
@@ -33,19 +38,19 @@ const CheckoutContent = () => {
 
           <PriceCalcSection>
             <small>Subtotal</small>
-            <p>৳ 4400.00</p>
+            <p>৳ {cartProducts.reduce((a, b) => a + b.total_price, 0)}.00</p>
           </PriceCalcSection>
 
           <PriceCalcSection>
             <small>Shipping</small>
-            <p>৳ 4400.00</p>
+            <p>৳ 00.00</p>
           </PriceCalcSection>
           <br />
           <hr />
           <br />
           <PriceCalcSection>
-            <small>Shipping</small>
-            <h2>৳ 4400.00</h2>
+            <small>Total</small>
+            <h2>৳ {cartProducts.reduce((a, b) => a + b.total_price, 0)}.00</h2>
           </PriceCalcSection>
         </CartProductsSection>
       </CheckoutContentContainer>

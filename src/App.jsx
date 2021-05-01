@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
@@ -24,7 +24,6 @@ import Account from "./pages/Account.page";
 import CookiePolicy from "./pages/CookiePolicy.page";
 import Loading from "./components/Lodading/Loading.component";
 import NotFoundComponent from "./components/NotFound/NotFound.component";
-import { GET_USER_INFO_CALL } from "./requests/services";
 
 export const UserContext = createContext();
 
@@ -32,20 +31,6 @@ function App() {
   const [theme, setTheme] = useState("light");
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
-
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) {
-      GET_USER_INFO_CALL(JSON.parse(token)).then((response) => {
-        if (response.data.errors) {
-          console.log(response.data.errors);
-        } else {
-          setLoggedInUser(response.data);
-          console.log(response);
-        }
-      });
-    }
-  }, []);
 
   return (
     <>
@@ -74,7 +59,6 @@ function App() {
                   path="/product-info/:productId"
                   component={ProductInfo}
                 />
-                <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/sign-in" component={SignIn} />
                 <Route exact path="/sign-up" component={SignUp} />
@@ -83,6 +67,9 @@ function App() {
                 <PrivateRoute exact path="/account">
                   <Account />
                 </PrivateRoute>
+                <Route exact path="/checkout">
+                  <Checkout />
+                </Route>
                 <Route
                   exact
                   path="/privacy-statement"

@@ -1,7 +1,8 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import logo from "../../assets/logos/logo-secondary.svg";
+import secondaryLogo from "../../assets/logos/logo-secondary.svg";
+import primaryLogo from "../../assets/logos/logo-primary.svg";
 import { CheckoutPageButton } from "../CheckoutContent/CheckoutContent.style";
 import {
   CheckboxWrapper,
@@ -9,64 +10,68 @@ import {
   ShippingAddress,
   ShippingInfoFormContainer,
 } from "./ShippingInfoForm.style";
+import { useTheme } from "styled-components";
+import { useHistory } from "react-router";
 
 const ShippingInfoForm = () => {
+  const history = useHistory();
+  const theme = useTheme();
   return (
     <>
       <ShippingInfoFormContainer>
         <div className="shipping__wrapper">
-          <img src={logo} alt="" />
+          <img
+            src={
+              theme.colors.primary === "#231f20" ? secondaryLogo : primaryLogo
+            }
+            alt="tatiartant"
+            onClick={() => history.push("/")}
+          />
           <h6>
             Cart <FontAwesomeIcon icon={faAngleRight} /> Information
             <FontAwesomeIcon icon={faAngleRight} /> Shipping
             <FontAwesomeIcon icon={faAngleRight} /> Payment
           </h6>
         </div>
-
+        {/* 
         <div className="contact__info">
           <h1>Contact information</h1>
           <br />
           <h5>Already have an account ? Log in</h5>
         </div>
+        <input type="text" /> */}
 
-        <input type="text" />
-        <CheckboxWrapper>
+        {/* <CheckboxWrapper>
           <input type="checkbox" id="update_confirmation" />
           <label htmlFor="update_confirmation">
             Keep me up to date on news and exclusive offers
           </label>
-        </CheckboxWrapper>
-
+        </CheckboxWrapper> */}
+        <br />
         <ShippingAddress>
-          <h1>Shipping address</h1>
+          <h1>Shipping Address</h1>
           <br />
+          <input type="text" placeholder="Name" />
           <InputWrap>
-            <input type="text" placeholder="First name" />
-            <input type="text" placeholder="Last name" />
+            <input type="text" placeholder="Phone" />
+            <input type="text" placeholder="Email" />
           </InputWrap>
           <input type="text" placeholder="Address" />
           <input type="text" placeholder="Apartment, suit, etc." />
-          <input type="text" placeholder="City" />
           <InputWrap>
-            <select id="cars">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="opel">Opel</option>
-              <option value="audi">Audi</option>
-            </select>
+            <input type="text" placeholder="City" />
+
             <input type="text" placeholder="Postal code" />
           </InputWrap>
-          <input type="text" placeholder="Phone" />
-          <CheckboxWrapper>
-            <input type="checkbox" id="update_confirmation" />
-            <label htmlFor="update_confirmation">
-              Keep me up to date on news and exclusive offers
-            </label>
-          </CheckboxWrapper>
+          <select id="cars">
+            <option value="volvo">--- Select Payment Method ---</option>
+            <option value="saab">Cash on delivery</option>
+            <option value="opel">Payment</option>
+          </select>
           <CheckoutPageButton type="submit">
             Continue to shipping
           </CheckoutPageButton>{" "}
-          <small>Return to cart</small>
+          <small onClick={() => history.push("/cart")}>Return to cart</small>
         </ShippingAddress>
         <br />
         <hr />
