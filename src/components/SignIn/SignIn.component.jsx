@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
@@ -53,15 +53,6 @@ const SignInContent = () => {
       }
     }
   };
-
-  // useEffect(() => {
-  //   // let token = JSON.parse(localStorage.getItem("token"));
-  //   GET_USER_INFO_CALL().then((response) => {
-  //     console.log(response);
-  //     setLoggedInUser(response.data);
-  //     history.replace(from);
-  //   });
-  // }, []);
 
   return (
     <>

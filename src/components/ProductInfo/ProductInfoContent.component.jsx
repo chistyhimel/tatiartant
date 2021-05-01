@@ -43,6 +43,9 @@ const ProductInfoContent = () => {
     galleries,
     colors,
     details,
+    stock,
+    size_price,
+    previous_price,
   } = porductInfo;
   const [images, setImages] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -103,19 +106,15 @@ const ProductInfoContent = () => {
               <SizeChartContainer>
                 <h2>
                   <span>Size</span>
-                  <span>
-                    <u>Size Chart</u>
-                  </span>
                 </h2>
                 <div>
-                  <span className="size__box">XS</span>
-                  <span className="size__box">S</span>
-                  <span className="size__box">M</span>
-                  <span className="size__box">L</span>
-                  <span className="size__box">XL</span>
-                  <span className="size__box">XXL</span>
-                  <span className="size__box">3XL</span>
-                  <span className="size__box">4XL</span>
+                  {size
+                    ? size.map((size, idx) => (
+                        <span key={idx} className="size__box">
+                          {size}
+                        </span>
+                      ))
+                    : null}
                 </div>
               </SizeChartContainer>
               <br />
@@ -140,9 +139,9 @@ const ProductInfoContent = () => {
               </button>
               <br />
               <br />
-              <span>
+              <button>
                 <PrimaryButton outlined={true}>Buy it now</PrimaryButton>
-              </span>
+              </button>
               <br />
 
               {/* ----------------------Product Spacifications Section ----------------------*/}

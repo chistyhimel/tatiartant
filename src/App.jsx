@@ -67,9 +67,9 @@ function App() {
                 <PrivateRoute exact path="/account">
                   <Account />
                 </PrivateRoute>
-                <Route exact path="/checkout">
+                <PrivateRoute exact path="/checkout">
                   <Checkout />
-                </Route>
+                </PrivateRoute>
                 <Route
                   exact
                   path="/privacy-statement"

@@ -18,18 +18,6 @@ export const ShippingInfoFormContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0;
   }
-  /* .contact__info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 15px;
-
-    @media (max-width: 768px) {
-      margin-top: 20px;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  } */
 
   .shipping__wrapper {
     @media (max-width: 768px) {
@@ -45,6 +33,7 @@ export const ShippingInfoFormContainer = styled.div`
       display: block;
       margin: 0 auto;
       padding-bottom: 25px;
+      cursor: pointer;
     }
 
     h6 {
@@ -109,19 +98,6 @@ export const InputWrap = styled.div`
 
     @media (max-width: 768px) {
       width: 100%;
-    }
-  }
-`;
-
-export const CheckboxWrapper = styled.div`
-  input[type="checkbox"] {
-    margin-right: 15px;
-    width: 15px;
-    height: 15px;
-  }
-  label {
-    @media (max-width: 768px) {
-      font-size: 13px;
     }
   }
 `;

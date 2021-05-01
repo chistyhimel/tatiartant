@@ -106,12 +106,13 @@ export const ProductsDetailsContainer = styled.div`
     font: inherit;
     cursor: pointer;
     outline: inherit;
+
+    div {
+      width: 100%;
+      text-align: center;
+    }
   }
 
-  div {
-    width: 100%;
-    text-align: center;
-  }
   h1 {
     font-size: 24px;
     font-weight: 400;
@@ -146,26 +147,15 @@ export const ProductsDetailsContainer = styled.div`
 
 export const SizeChartContainer = styled.div`
   h2 {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 10px;
-    span {
-      display: block;
-    }
   }
 
   div {
-    display: flex;
-    justify-content: space-between;
-    @media (max-width: 768px) {
-      flex-wrap: wrap;
-    }
-
     span {
       cursor: pointer;
       border: 1px solid lightgray;
       padding: 10px;
-      /* margin-right: 10px; */
+      margin-right: 10px;
       margin-bottom: 10px;
     }
   }

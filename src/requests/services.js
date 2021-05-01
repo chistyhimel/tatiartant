@@ -60,6 +60,10 @@ export const GET_FEATURED_PRODUCTS = (type) => {
   return axios.get(`${BASE_URL}/product/${type}`);
 };
 
+export const USER_ORDER = (orderData) => {
+  return axios.post(api.order, orderData, { headers: configParams });
+};
+
 // export const VERIFY_EMAIL_CALL = (key) => {
 //   return axios.get(api.user.verifyEmail(key), {
 //     headers: userInfoConfigParams,

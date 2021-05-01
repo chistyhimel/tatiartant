@@ -1,21 +1,65 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import secondaryLogo from "../../assets/logos/logo-secondary.svg";
 import primaryLogo from "../../assets/logos/logo-primary.svg";
 import { CheckoutPageButton } from "../CheckoutContent/CheckoutContent.style";
 import {
-  CheckboxWrapper,
   InputWrap,
   ShippingAddress,
   ShippingInfoFormContainer,
 } from "./ShippingInfoForm.style";
 import { useTheme } from "styled-components";
 import { useHistory } from "react-router";
+import { UserContext } from "../../App";
+import { useForm } from "react-hook-form";
+import { USER_ORDER } from "../../requests/services";
 
 const ShippingInfoForm = () => {
+  const { user, products } = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = user;
+  const [cartProducts, setCartProducts] = products;
+  const { register, handleSubmit } = useForm();
   const history = useHistory();
   const theme = useTheme();
+
+  console.log(loggedInUser);
+
+  const onSubmit = (data, e) => {
+    let orderData = {
+      user_id: loggedInUser.id,
+      ordered_products: cartProducts,
+      payment_mathod: data.payment_mathod,
+      shipping_address: data.shipping_address,
+      shipping_phone: data.shipping_phone,
+      shipping_email: data.shipping_email,
+      shipping_city: data.shipping_city,
+      shipping_zip: data.shipping_zip,
+      shipping_name: data.shipping_name,
+      shipping_cost: "",
+      customer_email: data.shipping_email,
+      customer_name: data.shipping_name,
+      customer_phone: data.shipping_phone,
+      customer_address: data.shipping_address,
+      customer_city: data.shipping_city,
+      customer_zip: data.shipping_zip,
+      coupon_code: " ",
+      coupon_discount: 0,
+      coupon_id: "",
+      tax: 10,
+      pay_amount: cartProducts.reduce((a, b) => a + b.total_price, 0),
+      order_note: "lorem ipsum",
+    };
+
+    console.log(orderData);
+
+    USER_ORDER(orderData).then((response) => {
+      if (response.data.status === "success") {
+        console.log(response.data);
+      }
+    });
+  };
+
   return (
     <>
       <ShippingInfoFormContainer>
@@ -33,40 +77,57 @@ const ShippingInfoForm = () => {
             <FontAwesomeIcon icon={faAngleRight} /> Payment
           </h6>
         </div>
-        {/* 
-        <div className="contact__info">
-          <h1>Contact information</h1>
-          <br />
-          <h5>Already have an account ? Log in</h5>
-        </div>
-        <input type="text" /> */}
 
-        {/* <CheckboxWrapper>
-          <input type="checkbox" id="update_confirmation" />
-          <label htmlFor="update_confirmation">
-            Keep me up to date on news and exclusive offers
-          </label>
-        </CheckboxWrapper> */}
         <br />
-        <ShippingAddress>
+        <ShippingAddress onSubmit={handleSubmit(onSubmit)}>
           <h1>Shipping Address</h1>
           <br />
-          <input type="text" placeholder="Name" />
+          <input
+            type="text"
+            placeholder="Name"
+            defaultValue={loggedInUser.name}
+            {...register("shipping_name")}
+            required
+          />
           <InputWrap>
-            <input type="text" placeholder="Phone" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="tel"
+              placeholder="Phone"
+              defaultValue={loggedInUser.phone}
+              {...register("shipping_phone")}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("shipping_email")}
+              required
+            />
           </InputWrap>
-          <input type="text" placeholder="Address" />
-          <input type="text" placeholder="Apartment, suit, etc." />
+          <input
+            type="text"
+            placeholder="Address"
+            {...register("shipping_address")}
+            required
+          />
           <InputWrap>
-            <input type="text" placeholder="City" />
+            <input
+              type="text"
+              placeholder="City"
+              {...register("shipping_city")}
+              required
+            />
 
-            <input type="text" placeholder="Postal code" />
+            <input
+              type="text"
+              placeholder="Postal code"
+              {...register("shipping_zip")}
+              required
+            />
           </InputWrap>
-          <select id="cars">
-            <option value="volvo">--- Select Payment Method ---</option>
-            <option value="saab">Cash on delivery</option>
-            <option value="opel">Payment</option>
+          <select {...register("payment_mathod")} required>
+            <option value="">--- Select Payment Method ---</option>
+            <option value="Cash on delivery">Cash on delivery</option>
+            <option value="Payment">Payment</option>
           </select>
           <CheckoutPageButton type="submit">
             Continue to shipping
