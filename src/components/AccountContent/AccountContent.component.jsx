@@ -7,7 +7,6 @@ function AccountContent() {
   const { user, products } = useContext(UserContext);
   const [loggedInUser, setLoggedInUser] = user;
 
-  console.log(loggedInUser);
   return (
     <>
       <AccountContainer>

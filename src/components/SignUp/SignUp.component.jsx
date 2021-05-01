@@ -18,7 +18,7 @@ const SignUpContent = () => {
     setError(null);
     let passwordValid = data.password === data.password_confirmation;
     let passwordLength =
-      data.password.length && data.password_confirmation.length > 4;
+      data.password.length && data.password_confirmation.length >= 4;
     if (data.phone.length >= 11 && passwordValid && passwordLength) {
       setUserNum(data.phone);
       console.log(data);
@@ -96,7 +96,7 @@ const SignUpContent = () => {
               {error ? <small>{error}</small> : null}
 
               <button type="submit">
-                <PrimaryButton>Login</PrimaryButton>
+                <PrimaryButton>Register</PrimaryButton>
               </button>
             </form>
             <p>
