@@ -1,6 +1,6 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import secondaryLogo from "../../assets/logos/logo-secondary.svg";
 import primaryLogo from "../../assets/logos/logo-primary.svg";
 import { CheckoutPageButton } from "../CheckoutContent/CheckoutContent.style";
@@ -19,46 +19,66 @@ const ShippingInfoForm = () => {
   const { user, products } = useContext(UserContext);
   const [loggedInUser, setLoggedInUser] = user;
   const [cartProducts, setCartProducts] = products;
+  const [orderedProducts, setOrderedProducts] = useState([]);
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const theme = useTheme();
 
-  console.log(loggedInUser);
+  useEffect(() => {
+    if (cartProducts.length) {
+      let products = cartProducts.map((product) => ({
+        product_id: product.id,
+        product_name: product.name,
+        product_size: product.size,
+        product_price: product.price,
+        product_quantity: product.quantity,
+        product_color: product.color,
+        total_price: product.total_price,
+      }));
+      setOrderedProducts(products);
+    }
+  }, []);
 
   const onSubmit = (data, e) => {
-    let orderData = {
-      user_id: loggedInUser.id,
-      ordered_products: cartProducts,
-      payment_mathod: data.payment_mathod,
-      shipping_address: data.shipping_address,
-      shipping_phone: data.shipping_phone,
-      shipping_email: data.shipping_email,
-      shipping_city: data.shipping_city,
-      shipping_zip: data.shipping_zip,
-      shipping_name: data.shipping_name,
-      shipping_cost: "",
-      customer_email: data.shipping_email,
-      customer_name: data.shipping_name,
-      customer_phone: data.shipping_phone,
-      customer_address: data.shipping_address,
-      customer_city: data.shipping_city,
-      customer_zip: data.shipping_zip,
-      coupon_code: " ",
-      coupon_discount: 0,
-      coupon_id: "",
-      tax: 10,
-      pay_amount: cartProducts.reduce((a, b) => a + b.total_price, 0),
-      order_note: "lorem ipsum",
-    };
+    if (orderedProducts.length) {
+      let orderData = {
+        user_id: loggedInUser.id,
+        ordered_products: orderedProducts,
+        payment_mathod: data.payment_mathod,
+        shipping_address: data.shipping_address,
+        shipping_phone: data.shipping_phone,
+        shipping_email: data.shipping_email,
+        shipping_city: data.shipping_city,
+        shipping_zip: data.shipping_zip,
+        shipping_name: data.shipping_name,
+        shipping_cost: 0,
+        customer_email: data.shipping_email,
+        customer_name: data.shipping_name,
+        customer_phone: data.shipping_phone,
+        customer_address: data.shipping_address,
+        customer_city: data.shipping_city,
+        customer_zip: data.shipping_zip,
+        coupon_code: "",
+        coupon_discount: 0,
+        coupon_id: "",
+        tax: 10,
+        pay_amount: cartProducts.reduce((a, b) => a + b.total_price, 0),
+        order_note: "lorem ipsum",
+        paymentMethod: data.payment_mathod,
+      };
 
-    console.log(orderData);
+      console.log(orderData);
 
-    USER_ORDER(orderData).then((response) => {
-      if (response.data.status === "success") {
-        console.log(response.data);
-      }
-    });
+      USER_ORDER(orderData).then((response) => {
+        if (response.data.status === "success") {
+          console.log(response.data);
+        }
+      });
+    }
   };
+
+  console.log(cartProducts);
+  console.log(orderedProducts);
 
   return (
     <>
