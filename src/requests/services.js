@@ -60,8 +60,12 @@ export const GET_FEATURED_PRODUCTS = (type) => {
   return axios.get(`${BASE_URL}/product/${type}`);
 };
 
-export const USER_ORDER = (orderData) => {
-  return axios.post(api.order, orderData, { headers: configParams });
+export const USER_ORDER = (orderData, token) => {
+  return axios.post(api.order, orderData, {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  });
 };
 
 // export const VERIFY_EMAIL_CALL = (key) => {

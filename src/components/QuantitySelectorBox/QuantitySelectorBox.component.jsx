@@ -16,6 +16,8 @@ const QuantitySelectorBox = ({ porductInfo }) => {
   const increment = "increment";
   const decrement = "decrement";
 
+  console.log(porductInfo);
+
   return (
     <>
       <QuantitySelectorWrap>

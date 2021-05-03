@@ -29,9 +29,9 @@ const ShippingInfoForm = () => {
       let products = cartProducts.map((product) => ({
         product_id: product.id,
         product_name: product.name,
-        product_size: product.size,
+        product_size: "M",
         product_price: product.price,
-        product_quantity: product.quantity,
+        product_quantity: product.total_quantity,
         product_color: product.color,
         total_price: product.total_price,
       }));
@@ -40,9 +40,11 @@ const ShippingInfoForm = () => {
   }, []);
 
   const onSubmit = (data, e) => {
+    let token = JSON.parse(localStorage.getItem("token"));
     if (orderedProducts.length) {
       let orderData = {
         user_id: loggedInUser.id,
+        totalQty: orderedProducts.length,
         ordered_products: orderedProducts,
         payment_mathod: data.payment_mathod,
         shipping_address: data.shipping_address,
@@ -64,16 +66,17 @@ const ShippingInfoForm = () => {
         tax: 10,
         pay_amount: cartProducts.reduce((a, b) => a + b.total_price, 0),
         order_note: "lorem ipsum",
-        paymentMethod: data.payment_mathod,
       };
 
-      console.log(orderData);
+      console.log(token);
 
-      USER_ORDER(orderData).then((response) => {
-        if (response.data.status === "success") {
-          console.log(response.data);
-        }
-      });
+      USER_ORDER(orderData, token)
+        .then((response) => {
+          if (response.data.status === "success") {
+            console.log(response.data);
+          }
+        })
+        .catch((error) => console.log(error));
     }
   };
 

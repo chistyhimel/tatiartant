@@ -15,25 +15,25 @@ export const handleQuantity = (
   pd,
   quantityState
 ) => {
-  if (cartProducts.length) {
-    const product = cartProducts.find((p) => p.id === pd.id);
+  console.log(quantityState);
+  let product = cartProducts.find((p) => p.id === pd.id);
+
+  if (product) {
     let productIndex = cartProducts.findIndex((obj) => obj.id === product.id);
-    if (product) {
-      if (quantityState === "increment") {
-        product.total_quantity = product.total_quantity + 1;
-      } else if (quantityState === "decrement") {
-        if (product.total_quantity > 1) {
-          product.total_quantity = product.total_quantity - 1;
-        } else {
-          handleRemoveItemFromCart(cartProducts, setCartProducts, pd.id);
-          return;
-        }
+    if (quantityState === "increment") {
+      product.total_quantity = product.total_quantity + 1;
+    } else if (quantityState === "decrement") {
+      if (product.total_quantity > 1) {
+        product.total_quantity = product.total_quantity - 1;
+      } else {
+        handleRemoveItemFromCart(cartProducts, setCartProducts, pd.id);
+        return;
       }
-      product.total_price = product.price * product.total_quantity;
-      let updatedProducts = [...cartProducts];
-      updatedProducts[productIndex] = product;
-      setCartProducts(updatedProducts);
     }
+    product.total_price = product.price * product.total_quantity;
+    let updatedProducts = [...cartProducts];
+    updatedProducts[productIndex] = product;
+    setCartProducts(updatedProducts);
   } else if (quantityState === "increment") {
     handleAddToCart(cartProducts, setCartProducts, pd);
   }

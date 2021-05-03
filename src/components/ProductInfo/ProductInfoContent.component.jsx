@@ -81,6 +81,8 @@ const ProductInfoContent = () => {
     });
   }, [productId]);
 
+  console.log(porductInfo);
+
   return !loader ? (
     <>
       <ProductInfoWrap>
@@ -108,7 +110,7 @@ const ProductInfoContent = () => {
                   <span>Size</span>
                 </h2>
                 <div>
-                  {size
+                  {size.length
                     ? size.map((size, idx) => (
                         <span key={idx} className="size__box">
                           {size}
