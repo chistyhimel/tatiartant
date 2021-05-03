@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import {
+  findProductOnCart,
   handleQuantity,
   handleRemoveItemFromCart,
 } from "../../utils/cartManagement";
@@ -36,7 +37,9 @@ const QuantitySelectorBox = ({ porductInfo }) => {
             -
           </button>
           <span>
-            {porductInfo.total_quantity ? porductInfo.total_quantity : 1}
+            {findProductOnCart(cartProducts, porductInfo.id).exist
+              ? findProductOnCart(cartProducts, porductInfo.id).total_quantity
+              : 1}
           </span>
           <button
             onClick={() => {

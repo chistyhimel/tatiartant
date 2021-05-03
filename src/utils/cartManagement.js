@@ -1,6 +1,6 @@
 export const handleAddToCart = (cartProducts, setCartProducts, product) => {
   product.price = parseInt(product.price);
-  product.total_price = product.price;
+  product.total_price = Math.round(parseInt(product.price));
   product.quantity = 1;
   product.total_quantity = product.quantity;
   product.size = "";
@@ -15,7 +15,6 @@ export const handleQuantity = (
   pd,
   quantityState
 ) => {
-  console.log(quantityState);
   let product = cartProducts.find((p) => p.id === pd.id);
 
   if (product) {
@@ -40,13 +39,14 @@ export const handleQuantity = (
 };
 
 export const findProductOnCart = (cartProducts = [], productId = 0) => {
-  if (cartProducts.length) {
-    const product = cartProducts.find((p) => p.id === productId);
-    if (product) {
-      return true;
-    } else {
-      return false;
-    }
+  const product = cartProducts.find((p) => p.id === productId);
+  if (product) {
+    return {
+      exist: true,
+      total_quantity: product.total_quantity,
+    };
+  } else {
+    return { exist: false };
   }
 };
 

@@ -44,7 +44,7 @@ const ProductCard = ({ product, setSearchBarOpen }) => {
         </CardImgContainer>
         <br />
         <CardText>{name}</CardText>
-        <small>Bdt. {price}</small>
+        <small>Bdt. {Math.round(parseInt(price))}</small>
       </ProductCardConatiner>
     </>
   );

@@ -79,6 +79,7 @@ const ProductInfoContent = () => {
         history.push("/produt-info/not-found");
       }
     });
+    return;
   }, [productId]);
 
   console.log(porductInfo);
@@ -102,7 +103,7 @@ const ProductInfoContent = () => {
               <h1>{name}</h1>
               <small>SKU: SRBGKOTA042</small>
               <br />
-              <p>Bdt. {price}</p>
+              <p>Bdt. {Math.round(parseInt(price))}.00</p>
               <br />
 
               <SizeChartContainer>
@@ -131,12 +132,12 @@ const ProductInfoContent = () => {
                 onClick={() =>
                   handleAddToCart(cartProducts, setCartProducts, porductInfo)
                 }
-                disabled={findProductOnCart(cartProducts, id) && true}
+                disabled={findProductOnCart(cartProducts, id).exist && true}
               >
                 <TertiaryButton>
-                  {findProductOnCart(cartProducts, id)
+                  {findProductOnCart(cartProducts, id).exist
                     ? "Product Already on Cart"
-                    : `Add to cart . Bdt. ${price}`}
+                    : `Add to cart . Bdt. ${Math.round(parseInt(price))}`}
                 </TertiaryButton>
               </button>
               <br />
