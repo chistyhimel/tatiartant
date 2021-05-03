@@ -82,8 +82,6 @@ const ProductInfoContent = () => {
     return;
   }, [productId]);
 
-  console.log(porductInfo);
-
   return !loader ? (
     <>
       <ProductInfoWrap>

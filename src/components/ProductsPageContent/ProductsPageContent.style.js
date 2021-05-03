@@ -108,3 +108,55 @@ export const ProductsContainer = styled.div`
       changeLayout ? "repeat(2, 1fr)" : "repeat(1, 1fr)"};
   }
 `;
+
+export const PaginationWrap = styled.div`
+  .pagination_btns {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    height: 40px;
+    width: 80%;
+
+    a {
+      padding: 5px 15px;
+      margin: 5px;
+      font-size: 14px;
+      border-radius: 3px;
+      border: 1px solid ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.primary};
+      cursor: pointer;
+      transition: all 0.3s;
+
+      @media (max-width: 768px) {
+        padding: 5px 10px;
+        margin: 3px;
+        font-size: 10px;
+      }
+      @media (max-width: 350px) {
+        padding: 2px 8px;
+        margin: 2px;
+        font-size: 10px;
+      }
+
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.secondary};
+      }
+    }
+  }
+
+  .pagination__active a {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  .pagination__disabled a {
+    background-color: #e7e7e7;
+    color: ${({ theme }) => theme.colors.primary};
+    &:hover {
+      background-color: #e7e7e7;
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+`;

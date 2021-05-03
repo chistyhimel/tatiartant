@@ -52,6 +52,11 @@ export const GET_PRODUCTS = (categoryWithId) => {
   return axios.post(api.products, categoryWithId, { headers: configParams });
 };
 
+export const GET_ALL_PRODUCTS = (pageNumber) => {
+  console.log(pageNumber);
+  return axios.get(`${BASE_URL}/all-products?page=${pageNumber}`);
+};
+
 export const SEARCH_PRODUCTS = (searchTerm) => {
   return axios.post(api.search, searchTerm, { headers: configParams });
 };

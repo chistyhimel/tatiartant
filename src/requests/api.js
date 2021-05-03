@@ -12,7 +12,7 @@ export const api = {
   },
   productCategories: `${BASE_URL}/category`,
   products: `${BASE_URL}/product-cat/sub/child`,
-  allProducts: `${BASE_URL}/allProducts: all-products?page=1`,
+  allProducts: `${BASE_URL}/all-products?page=`,
   search: `${BASE_URL}/product/search`,
   featuredCollection: {
     newInStoreProducts: `${BASE_URL}/product/new`,

@@ -114,6 +114,7 @@ const Navbar = () => {
                     setSearchBarOpen(false);
                     setShopCategoriesOpen(true);
                   }}
+                  onClick={() => history.push("/products/all-products")}
                 >
                   Shop
                 </p>

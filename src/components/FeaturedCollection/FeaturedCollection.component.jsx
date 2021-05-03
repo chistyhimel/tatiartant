@@ -107,7 +107,7 @@ const FeaturedCollection = () => {
             </button>
           </FeaturedCollectionCardContainer>
           <br />
-          <span onClick={() => history.push("/products")}>
+          <span onClick={() => history.push("/products/all-products")}>
             <PrimaryButton>VIEW ALL PRODUCTS</PrimaryButton> <br />
           </span>
         </FeaturedCollectionContainer>
