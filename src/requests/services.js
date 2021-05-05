@@ -34,12 +34,13 @@ export const SIGNIN_CALL = (data) => {
   return axios.post(api.user.signIn, data, { headers: configParams });
 };
 
-export const GET_USER_INFO_CALL = (data) => {
-  return axios.post(api.user.getInfo, data, {
+export const GET_USER_INFO_CALL = (token) => {
+  console.log(token);
+  return axios.post(api.user.getInfo, token, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${data}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 };
@@ -66,10 +67,13 @@ export const GET_FEATURED_PRODUCTS = (type) => {
 };
 
 export const USER_ORDER = (orderData, token) => {
+  console.log(orderData, token);
   return axios.post(api.order, orderData, {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
 };
 

@@ -68,12 +68,10 @@ const ShippingInfoForm = () => {
         order_note: "lorem ipsum",
       };
 
-      console.log(token);
-
       USER_ORDER(orderData, token)
         .then((response) => {
+          console.log(response);
           if (response.data.status === "success") {
-            console.log(response.data);
           }
         })
         .catch((error) => console.log(error));
