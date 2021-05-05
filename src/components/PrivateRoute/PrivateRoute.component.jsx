@@ -21,6 +21,8 @@ const PrivateRoute = ({ children, ...rest }) => {
           console.log(error.message);
           setLoading(false);
         });
+    } else {
+      setLoading(false);
     }
   }, []);
 
