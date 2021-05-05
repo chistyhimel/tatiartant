@@ -24,6 +24,7 @@ import Account from "./pages/Account.page";
 import CookiePolicy from "./pages/CookiePolicy.page";
 import Loading from "./components/Lodading/Loading.component";
 import NotFoundComponent from "./components/NotFound/NotFound.component";
+import OrderPlaced from "./pages/OrderPlaced.page";
 
 export const UserContext = createContext();
 
@@ -54,6 +55,7 @@ function App() {
                   component={Products}
                 />
                 <Route path="/products/all-products" component={Products} />
+                <Route path="/order-placed" component={OrderPlaced} />
                 <Route
                   exact
                   path="/product-info/:productId"

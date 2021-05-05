@@ -25,7 +25,9 @@ const ProductsPageContent = () => {
   const [loader, setLoader] = useState(true);
   const [pageNumber, setPageNumber] = useState(0);
   const [allProductInfo, setAllProductInfo] = useState({});
+
   let totalProducts = allProductInfo && allProductInfo.total;
+  let productPerPage = allProductInfo && allProductInfo.per_page;
 
   useEffect(() => {
     if (categoryName && categoryType && categoryId) {
@@ -98,20 +100,22 @@ const ProductsPageContent = () => {
             : null}
         </ProductsContainer>
 
-        <PaginationWrap>
-          <ReactPaginate
-            previousLabel={"Prev"}
-            next={"Next"}
-            pageCount={Math.ceil(parseInt(totalProducts) / 2)}
-            onPageChange={changePage}
-            initialPage={pageNumber}
-            containerClassName={"pagination_btns"}
-            previousLinkClassName={"previous__btn"}
-            nextLinkClassName={"next__btn"}
-            disabledClassName={"pagination__disabled"}
-            activeClassName={"pagination__active"}
-          />
-        </PaginationWrap>
+        {totalProducts && (
+          <PaginationWrap>
+            <ReactPaginate
+              previousLabel={"Prev"}
+              next={"Next"}
+              pageCount={Math.ceil(totalProducts / productPerPage)}
+              onPageChange={changePage}
+              initialPage={pageNumber}
+              containerClassName={"pagination_btns"}
+              previousLinkClassName={"previous__btn"}
+              nextLinkClassName={"next__btn"}
+              disabledClassName={"pagination__disabled"}
+              activeClassName={"pagination__active"}
+            />
+          </PaginationWrap>
+        )}
       </Container>
     </ProductsPageContentContainer>
   );
