@@ -71,7 +71,7 @@ export const SecondaryButtonContainer = styled.div`
   text-align: center;
   width: fit-content;
   cursor: pointer;
-  a {
+  div {
     display: block;
     position: relative;
     margin: 0 auto;
@@ -145,7 +145,7 @@ export const TertiaryButtonContainer = styled.div`
   width: fit-content;
   cursor: pointer;
   font-family: "Vidaloka", serif;
-  a {
+  div {
     display: block;
     position: relative;
     margin: 0 auto;

@@ -7,8 +7,10 @@ import img2 from "../../assets/images/banner-images/banner-img2.jpg";
 import img3 from "../../assets/images/banner-images/banner-img3.jpg";
 import { BannerContainer, BannerWrapper } from "./Banner.style";
 import SecondaryButton from "../Buttons/SecondaryButton.component";
+import { useHistory } from "react-router";
 
 const Banner = () => {
+  const history = useHistory();
   const settings = {
     dots: true,
     pauseOnHover: true,
@@ -28,7 +30,9 @@ const Banner = () => {
             <img src={img1} alt="" />
             <div className="banner__img__overlay-1 banner__overlay">
               <h1>Finest Handcraft Clothings</h1>
-              <SecondaryButton>Shop Now</SecondaryButton>
+              <span onClick={() => history.push("/products/all-products")}>
+                <SecondaryButton>Shop Now</SecondaryButton>
+              </span>
             </div>
           </BannerContainer>
 
@@ -36,7 +40,9 @@ const Banner = () => {
             <img src={img2} alt="" />
             <div className="banner__img__overlay-2 banner__overlay">
               <h1>Finest Handcraft Clothings</h1>
-              <SecondaryButton>Shop Now</SecondaryButton>
+              <span onClick={() => history.push("/products/all-products")}>
+                <SecondaryButton>Shop Now</SecondaryButton>
+              </span>
             </div>
           </BannerContainer>
 
@@ -44,7 +50,9 @@ const Banner = () => {
             <img src={img3} alt="" />
             <div className="banner__img__overlay-3 banner__overlay">
               <h1>Finest Handcraft Clothings</h1>
-              <SecondaryButton>Shop Now</SecondaryButton>
+              <span onClick={() => history.push("/products/all-products")}>
+                <SecondaryButton>Shop Now</SecondaryButton>
+              </span>
             </div>
           </BannerContainer>
         </Slider>

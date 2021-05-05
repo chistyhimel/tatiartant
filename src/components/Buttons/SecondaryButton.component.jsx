@@ -4,9 +4,9 @@ import { SecondaryButtonContainer } from "./Buttons.style";
 const SecondaryButton = ({ children }) => {
   return (
     <SecondaryButtonContainer>
-      <a href="#">
+      <div>
         <span> {children}</span>
-      </a>
+      </div>
     </SecondaryButtonContainer>
   );
 };

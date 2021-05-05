@@ -4,9 +4,9 @@ import { TertiaryButtonContainer } from "./Buttons.style";
 const TertiaryButton = ({ children }) => {
   return (
     <TertiaryButtonContainer>
-      <a href="#">
+      <div>
         <span> {children}</span>
-      </a>
+      </div>
     </TertiaryButtonContainer>
   );
 };
