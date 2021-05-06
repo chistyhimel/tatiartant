@@ -75,7 +75,6 @@ const ShippingInfoForm = () => {
           if (response.data.status === "success") {
             orderData.invoice = response.data.invoice;
             setUserOrder(orderData);
-
             history.push("/order-placed");
           }
         })
