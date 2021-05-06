@@ -10,9 +10,9 @@ import {
 import ShippingInfoForm from "../ShippingInfoForm/ShippingInfoForm.component";
 import { IMG_BASE_URL } from "../../requests/api";
 const CheckoutContent = () => {
-  const { user, products } = useContext(UserContext);
+  const { products } = useContext(UserContext);
   const [cartProducts, setCartProducts] = products;
-
+  console.log(cartProducts);
   return (
     <>
       <CheckoutContentContainer>
@@ -25,7 +25,10 @@ const CheckoutContent = () => {
                     src={`${IMG_BASE_URL}/products/${product.photo}`}
                     alt=""
                   />
-                  <p>{product.name}</p>
+                  <p>
+                    {product.name}
+                    {/* <br /> {product.size} <br /> {product.color}{" "} */}
+                  </p>
                   <p>৳ {product.total_price}.00</p>
                 </div>
               ))

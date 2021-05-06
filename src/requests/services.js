@@ -67,7 +67,6 @@ export const GET_FEATURED_PRODUCTS = (type) => {
 };
 
 export const USER_ORDER = (orderData, token) => {
-  console.log(orderData, token);
   return axios.post(api.order, orderData, {
     headers: {
       Accept: "application/json",

@@ -16,10 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     overflow-x: hidden;
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
+
       font-family: 'Lato', sans-serif;
     background: ${({ theme }) => theme.colors.secondary};
     

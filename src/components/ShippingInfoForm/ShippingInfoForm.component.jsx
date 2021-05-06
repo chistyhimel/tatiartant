@@ -16,9 +16,10 @@ import { useForm } from "react-hook-form";
 import { USER_ORDER } from "../../requests/services";
 
 const ShippingInfoForm = () => {
-  const { user, products } = useContext(UserContext);
+  const { user, products, order } = useContext(UserContext);
   const [loggedInUser, setLoggedInUser] = user;
   const [cartProducts, setCartProducts] = products;
+  const [userOrder, setUserOrder] = order;
   const [orderedProducts, setOrderedProducts] = useState([]);
   const { register, handleSubmit } = useForm();
   const history = useHistory();
@@ -72,14 +73,16 @@ const ShippingInfoForm = () => {
         .then((response) => {
           console.log(response);
           if (response.data.status === "success") {
+            orderData.invoice = response.data.invoice;
+            setUserOrder(orderData);
+            history.push("/order-placed");
           }
         })
         .catch((error) => console.log(error));
     }
   };
 
-  console.log(cartProducts);
-  console.log(orderedProducts);
+  // console.log(cartProducts);
 
   return (
     <>

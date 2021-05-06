@@ -32,6 +32,7 @@ function App() {
   const [theme, setTheme] = useState("light");
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cartProducts, setCartProducts] = useState([]);
+  const [userOrder, setUserOrder] = useState({});
 
   return (
     <>
@@ -42,6 +43,7 @@ function App() {
           value={{
             user: [loggedInUser, setLoggedInUser],
             products: [cartProducts, setCartProducts],
+            order: [userOrder, setUserOrder],
           }}
         >
           <Router>

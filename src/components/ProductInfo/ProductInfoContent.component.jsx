@@ -140,7 +140,14 @@ const ProductInfoContent = () => {
               </button>
               <br />
               <br />
-              <button>
+              <button
+                onClick={() => {
+                  if (!findProductOnCart(cartProducts, id).exist) {
+                    handleAddToCart(cartProducts, setCartProducts, porductInfo);
+                  }
+                  history.push("/checkout");
+                }}
+              >
                 <PrimaryButton outlined={true}>Buy it now</PrimaryButton>
               </button>
               <br />
