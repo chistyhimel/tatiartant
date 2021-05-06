@@ -34,9 +34,29 @@ export const SIGNIN_CALL = (data) => {
   return axios.post(api.user.signIn, data, { headers: configParams });
 };
 
+export const LOGOUT_CALL = (token) => {
+  return axios.post(api.user.logout, token, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const GET_USER_INFO_CALL = (token) => {
-  console.log(token);
   return axios.post(api.user.getInfo, token, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const USER_ORDER_HISTORY_CALL = (token) => {
+  console.log(token);
+  return axios.post(api.user.orderHistory, token, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

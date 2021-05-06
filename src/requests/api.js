@@ -7,6 +7,7 @@ export const api = {
     signUpOTP: `${BASE_URL}/register`,
     signUpResendOTP: `${BASE_URL}/resend-otp`,
     signIn: `${BASE_URL}/login`,
+    logout: `${BASE_URL}/logout`,
     getInfo: `${BASE_URL}/me`,
     orderHistory: `${BASE_URL}/user/order-history`,
   },

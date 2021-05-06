@@ -14,6 +14,11 @@ export const AccountContainer = styled.div`
     margin: 25px auto;
   }
 
+  small {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
   div {
     display: flex;
     justify-content: space-between;
@@ -42,5 +47,34 @@ export const AccountContainer = styled.div`
         }
       }
     }
+  }
+`;
+
+export const OrderHistoryTableWrap = styled.div`
+  overflow-x: auto;
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+
+    @media (max-width: 560px) {
+      padding: 5px;
+      font-size: 10px;
+    }
+  }
+  th {
+    font-family: "Vidaloka", serif;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
   }
 `;
