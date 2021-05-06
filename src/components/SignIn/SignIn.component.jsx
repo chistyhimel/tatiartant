@@ -5,6 +5,7 @@ import { UserContext } from "../../App";
 import { GET_USER_INFO_CALL, SIGNIN_CALL } from "../../requests/services";
 import { showNotification } from "../../utils/notifications";
 import PrimaryButton from "../Buttons/PrimaryButton.component";
+import ForgotPassword from "./ForgotPassword";
 import { SignInContainer, SignInFormContainer } from "./SignIn.style";
 
 const SignInContent = () => {
@@ -15,6 +16,7 @@ const SignInContent = () => {
   const { user, products } = useContext(UserContext);
   const [loggedInUser, setLoggedInUser] = user;
   const [error, setError] = useState(null);
+  const [showForgetPass, setShowForgetPass] = useState(false);
 
   const onSubmit = (data, e) => {
     console.log(data);
@@ -54,38 +56,60 @@ const SignInContent = () => {
     }
   };
 
+  const handleForgotPassword = () => {
+    setShowForgetPass(true);
+  };
+
   return (
     <>
       <SignInContainer>
         <SignInFormContainer>
-          <h1>Login</h1>
-          <br />
-          <p>Please enter your email and password:</p>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="input__wrap">
-              <label htmlFor="phone">Phone</label>
-              <input type="tel" id="phone" {...register("phone")} required />
-            </div>
+          {!showForgetPass && (
+            <>
+              <h1>Login</h1>
+              <br />
+              <p>Please enter your email and password:</p>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="input__wrap">
+                  <label htmlFor="phone">Phone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    {...register("phone")}
+                    required
+                  />
+                </div>
 
-            <div className="input__wrap">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                {...register("password")}
-                required
-              />
-              <span>Forget password ?</span>
-            </div>
-            <small>{error ? error : null}</small>
-            <button type="submit">
-              <PrimaryButton>Login</PrimaryButton>
-            </button>
-          </form>
-          <p>
-            Don't have an account ?
-            <span onClick={() => history.push("/sign-up")}> Create one</span>
-          </p>
+                <div className="input__wrap">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    {...register("password")}
+                    required
+                  />
+                  <span onClick={() => handleForgotPassword()}>
+                    Forget password ?
+                  </span>
+                </div>
+                <small>{error ? error : null}</small>
+                <button type="submit">
+                  <PrimaryButton>Login</PrimaryButton>
+                </button>
+              </form>
+              <p>
+                Don't have an account ?
+                <span onClick={() => history.push("/sign-up")}>
+                  {" "}
+                  Create one
+                </span>
+              </p>
+            </>
+          )}
+
+          {showForgetPass && (
+            <ForgotPassword setShowForgetPass={setShowForgetPass} />
+          )}
         </SignInFormContainer>
       </SignInContainer>
     </>

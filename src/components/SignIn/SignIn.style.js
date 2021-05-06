@@ -43,6 +43,7 @@ export const SignInFormContainer = styled.div`
         cursor: pointer;
       }
     }
+
     label {
       cursor: pointer;
       text-align: left;

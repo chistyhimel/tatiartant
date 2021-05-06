@@ -65,6 +65,26 @@ export const USER_ORDER_HISTORY_CALL = (token) => {
   });
 };
 
+//-------------Forgot Password Services-------------//
+
+export const FORGOT_PASS_OTP_REQ = (phone) => {
+  return axios.post(api.user.forgotPassword.otpReq, phone, {
+    headers: configParams,
+  });
+};
+
+export const FORGOT_PASS_OTP_SEND = (data) => {
+  return axios.post(api.user.forgotPassword.otpSend, data, {
+    headers: configParams,
+  });
+};
+
+export const RESET_PASSWORD_REQ = (data) => {
+  return axios.post(api.user.forgotPassword.resetPassword, data, {
+    headers: configParams,
+  });
+};
+
 export const GET_PRODUCT_CATEGORIES_CALL = () => {
   return axios.get(api.productCategories);
 };

@@ -10,6 +10,12 @@ export const api = {
     logout: `${BASE_URL}/logout`,
     getInfo: `${BASE_URL}/me`,
     orderHistory: `${BASE_URL}/user/order-history`,
+
+    forgotPassword: {
+      otpReq: `${BASE_URL}/forget-password-otp`,
+      otpSend: `${BASE_URL}/forget-password-check-otp`,
+      resetPassword: `${BASE_URL}/reset-password`,
+    },
   },
   productCategories: `${BASE_URL}/category`,
   products: `${BASE_URL}/product-cat/sub/child`,
