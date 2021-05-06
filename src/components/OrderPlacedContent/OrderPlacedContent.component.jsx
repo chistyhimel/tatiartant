@@ -115,7 +115,12 @@ function OrderPlacedContent() {
           </section>
           <br />
           <br />
-          <span onClick={() => history.push("/")}>
+          <span
+            onClick={() => {
+              setCartProducts([]);
+              history.push("/");
+            }}
+          >
             <PrimaryButton>
               <FontAwesomeIcon icon={faChevronLeft} /> &nbsp; Back Home
             </PrimaryButton>
