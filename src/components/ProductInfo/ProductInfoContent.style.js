@@ -145,18 +145,36 @@ export const ProductsDetailsContainer = styled.div`
   }
 `;
 
-export const SizeChartContainer = styled.div`
+export const SizeColorContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   h2 {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
 
-  div {
-    span {
-      cursor: pointer;
-      border: 1px solid lightgray;
-      padding: 10px;
-      margin-right: 10px;
-      margin-bottom: 10px;
+  .sizes__wrap {
+    div {
+      span {
+        cursor: pointer;
+        border: 1px solid lightgray;
+        padding: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
     }
   }
+  .colors__wrap {
+    span {
+      display: flex;
+    }
+  }
+`;
+
+export const ColorBox = styled.div`
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  background-color: ${({ clr }) => (clr ? clr : null)};
 `;

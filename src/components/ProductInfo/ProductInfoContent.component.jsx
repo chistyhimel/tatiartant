@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
+  ColorBox,
   ProductImgContainer,
   ProductInfoContentContainer,
   ProductInfoWrap,
   ProductsDetailsContainer,
-  SizeChartContainer,
+  SizeColorContainer,
 } from "./ProductInfoContent.style";
 import { UserContext } from "../../App";
 import { Container } from "../../constants/container";
@@ -103,20 +104,29 @@ const ProductInfoContent = () => {
               <p>Bdt. {Math.round(parseInt(price))}.00</p>
               <br />
 
-              <SizeChartContainer>
-                <h2>
-                  <span>Size</span>
-                </h2>
-                <div>
-                  {size.length
-                    ? size.map((size, idx) => (
-                        <span key={idx} className="size__box">
-                          {size}
-                        </span>
-                      ))
-                    : null}
+              <SizeColorContainer>
+                <div className="sizes__wrap">
+                  <h2>Size</h2>
+                  <div>
+                    {size.length
+                      ? size.map((size, idx) => (
+                          <span key={idx} className="size__box">
+                            {size}
+                          </span>
+                        ))
+                      : null}
+                  </div>
                 </div>
-              </SizeChartContainer>
+                <div className="colors__wrap">
+                  {" "}
+                  <h2>Colors</h2>
+                  <span>
+                    {["red", "green", "yellow", "purple"].map((color) => (
+                      <ColorBox clr={color} />
+                    ))}
+                  </span>
+                </div>
+              </SizeColorContainer>
               <br />
 
               <span className="quantity__wrapper">

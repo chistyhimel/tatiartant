@@ -1,4 +1,5 @@
 export const handleAddToCart = (cartProducts, setCartProducts, product) => {
+  console.log(product);
   product.price = parseInt(product.price);
   product.total_price = Math.round(parseInt(product.price));
   product.quantity = 1;
