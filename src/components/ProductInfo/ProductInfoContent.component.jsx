@@ -79,7 +79,6 @@ const ProductInfoContent = () => {
         history.push("/produt-info/not-found");
       }
     });
-    return;
   }, [productId]);
 
   return !loader ? (

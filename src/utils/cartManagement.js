@@ -3,7 +3,6 @@ export const handleAddToCart = (cartProducts, setCartProducts, product) => {
   product.total_price = Math.round(parseInt(product.price));
   product.quantity = 1;
   product.total_quantity = product.quantity;
-  product.size = "";
   product.color = "";
   let newProduct = [...cartProducts, product];
   setCartProducts(newProduct);
