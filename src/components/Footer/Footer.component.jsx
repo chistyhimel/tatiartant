@@ -32,9 +32,9 @@ const Footer = () => {
                 Showroom Address: <br />
                 Tati Ar Tant
                 <br />
-                Shop No: 62 and 71
+                House:14, Road: 11
                 <br />
-                Town Hall, Asad gate, Mohammadpur, Dhaka.
+                Mohammadi Housing society, Mohammadpur, Dhaka.
               </p>
               <p>Contact us : +8801737900666</p>
               <p>Email : tatiartant@gmail.com</p>
