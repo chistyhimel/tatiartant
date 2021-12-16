@@ -29,7 +29,7 @@ const Banner = () => {
           <BannerContainer>
             <img src={img1} alt="" />
             <div className="banner__img__overlay-1 banner__overlay">
-              <h1>Finest Handcraft Clothings</h1>
+              <h1>Handloom Products of Bangladesh</h1>
               <span onClick={() => history.push("/products/all-products")}>
                 <SecondaryButton>Shop Now</SecondaryButton>
               </span>
@@ -39,7 +39,7 @@ const Banner = () => {
           <BannerContainer>
             <img src={img2} alt="" />
             <div className="banner__img__overlay-2 banner__overlay">
-              <h1>Finest Handcraft Clothings</h1>
+              <h1>Handloom Products of Bangladesh</h1>
               <span onClick={() => history.push("/products/all-products")}>
                 <SecondaryButton>Shop Now</SecondaryButton>
               </span>
@@ -49,7 +49,7 @@ const Banner = () => {
           <BannerContainer>
             <img src={img3} alt="" />
             <div className="banner__img__overlay-3 banner__overlay">
-              <h1>Finest Handcraft Clothings</h1>
+              <h1>Handloom Products of Bangladesh</h1>
               <span onClick={() => history.push("/products/all-products")}>
                 <SecondaryButton>Shop Now</SecondaryButton>
               </span>
