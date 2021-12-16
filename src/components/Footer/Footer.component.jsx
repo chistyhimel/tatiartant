@@ -25,8 +25,8 @@ const Footer = () => {
             <div className="about__shop">
               <p className="footer__titile_text">About the shop</p>
               <p>
-                Explore unique handcrafted products from the finest <br />{" "}
-                artisans of Bangladesh.
+                Explore Traditional, unique handloom and environment friendly products from the <br />{" "}
+                finest artisans of Bangladesh.
               </p>
               <p>
                 Showroom Address: <br />
