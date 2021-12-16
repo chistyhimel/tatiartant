@@ -38,7 +38,7 @@ const AboutUs = () => {
         <img src={img1} alt="" />
         <img src={img2} alt="" />
         <p>
-          <strong> “Tati ar Rant”</strong> the name itself represents that we
+          <strong> “Tati ar Tant”</strong> the name itself represents that we
           are working with traditional fabrics to make our products. We are
           mainly focusing on Tangail handmade clothing that brings you to the
           timeless culture of that fabric. Our moto is “An ethical trade with
