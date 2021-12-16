@@ -9,6 +9,7 @@ import {
 } from "./Navbar.style";
 import secondaryLogo from "../../assets/logos/logo-secondary.svg";
 import primaryLogo from "../../assets/logos/logo-primary.svg";
+import Logo from "../../assets/logos/Tatilogo.png"
 import SearchBar from "../SearchBar/SearchBar.component";
 import ShopCategories from "../ShopCategories/ShopCategories.component";
 import CartSidebar from "../CartSidebar/CartSidebar.component";
@@ -53,7 +54,8 @@ const Navbar = () => {
             {/*---------- Mobile Hamburger Menu---------- */}
             <img
               src={
-                theme.colors.primary === "#231f20" ? secondaryLogo : primaryLogo
+                Logo
+                // theme.colors.primary === "#231f20" ? secondaryLogo : primaryLogo
               }
               alt="tatiartant"
               className="nav__logo"
