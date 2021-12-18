@@ -6,7 +6,7 @@ import img4 from "../../assets/images/model-images/model-4-hover.jpg";
 export const reviewData = [
   {
     img: img1,
-    name: "Sameera",
+    name: "Rabeya",
     date: "18/04/2021",
     review:
       "It's very very attractive. The color is versatile. The pattern is to die for. I simply love it.",
@@ -16,7 +16,7 @@ export const reviewData = [
   },
   {
     img: img2,
-    name: "Priya",
+    name: "Dora",
     date: "25/02/2021",
     review:
       "The print is lovely, the shade of blue gorgeous, the fabric soft. What's not to love!",
@@ -26,7 +26,7 @@ export const reviewData = [
   },
   {
     img: img3,
-    name: "Sameera",
+    name: "Bushra",
     date: "20/03/2021",
     review: "Nice Material, comfortable fit.Loved it",
     star: 4,
@@ -35,7 +35,7 @@ export const reviewData = [
   },
   {
     img: img4,
-    name: "Sameera",
+    name: "Ananna",
     date: "05/04/2021",
     review: "Nice Material, comfortable fit.Loved it.",
     star: 4,
