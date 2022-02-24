@@ -22,7 +22,27 @@ export const SIGNUP_CALL = (data) => {
   return axios.post(api.user.signUp, data, { headers: configParams });
 };
 
+export const SIGNUP_OTP_CALL = (data) => {
+  return axios.post(api.user.signUpOTP, data, { headers: configParams });
+};
 
+export const SIGNUP_RESEND_OTP_CALL = (data = " ") => {
+  return axios.post(api.user.signUpResendOTP, data, { headers: configParams });
+};
+
+export const SIGNIN_CALL = (data) => {
+  return axios.post(api.user.signIn, data, { headers: configParams });
+};
+
+export const LOGOUT_CALL = (token) => {
+  return axios.post(api.user.logout, token, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 export const GET_USER_INFO_CALL = (token) => {
   return axios.post(api.user.getInfo, token, {
